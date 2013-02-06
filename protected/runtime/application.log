@@ -1,0 +1,9 @@
+2013/02/06 17:44:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "branchsite/create".' in C:\wamp\www\yii1113\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii1113\framework\web\CWebApplication.php(141): CWebApplication->runController('branchsite/crea...')
+#1 C:\wamp\www\yii1113\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\kofa\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/kofa/index.php?r=branchsite/create&returnTo=category%2Fcreate
+HTTP_REFERER=http://localhost/kofa/index.php?r=category/create
+---
