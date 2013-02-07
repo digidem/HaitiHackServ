@@ -5,21 +5,14 @@
         'method'=>'get',
 )); ?>
 
-        <div class="row">
-                <?php echo $form->label($model,'id'); ?>
-                <?php echo $form->textField($model,'id'); ?>
-        </div>
+       
 
         <div class="row">
                 <?php echo $form->label($model,'service_name'); ?>
                 <?php echo $form->textField($model,'service_name',array('size'=>45,'maxlength'=>45)); ?>
         </div>
 
-        <div class="row">
-                <?php echo $form->label($model,'description'); ?>
-                <?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
-        </div>
-
+        
         <div class="row buttons">
                 <?php echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
         </div>

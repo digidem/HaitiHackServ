@@ -39,11 +39,11 @@ data: $(this).serialize()
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
 		'name',
 		'phone',
 		'email',
-		'organisation',
+		//'organisation',
 		array(
 			'class'=>'CButtonColumn',
 		),

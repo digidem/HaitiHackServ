@@ -24,7 +24,7 @@
 			</div>
 
 
-<label for="Organisation">Belonging Organisation</label><?php 
+<label for="Organisation">Contact Organisation</label><?php 
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'organisation0',

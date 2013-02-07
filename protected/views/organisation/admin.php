@@ -43,8 +43,8 @@ data: $(this).serialize()
 		'name',
 		'email',
 		'acronym',
-		'url',
-		'present_before_earthquake',
+		//'url',
+		//'present_before_earthquake',
 		/*
 		'coverage',
 		*/

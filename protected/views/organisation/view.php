@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Organisation #<?php echo $model->name; ?></h1>
+<h1>View Organisation : <?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -29,17 +29,19 @@ $this->menu=array(
 )); ?>
 
 
-<br /><h2> This Branchsite belongs to this Organisation: </h2>
+<br /><h2> Branch of this Organisation: </h2>
 <ul><?php foreach($model->branchsites as $foreignobj) { 
 
 				printf('<li>%s</li>', CHtml::link($foreignobj->branch_name, array('branchsite/view', 'id' => $foreignobj->id)));
 
-				} ?></ul><br /><h2> This Contact belongs to this Organisation: </h2>
+				} ?>
+</ul><br /><h2>Contact of this Organisation: </h2>
 <ul><?php foreach($model->contacts as $foreignobj) { 
 
 				printf('<li>%s</li>', CHtml::link($foreignobj->name, array('contact/view', 'id' => $foreignobj->id)));
 
-				} ?></ul><br /><h2> This Partners belongs to this Organisation: </h2>
+				} ?>
+</ul><br /><h2>Partners  of this Organisation: </h2>
 <ul><?php foreach($model->partners as $foreignobj) { 
 
 				printf('<li>%s</li>', CHtml::link($foreignobj->name, array('partners/view', 'id' => $foreignobj->id)));

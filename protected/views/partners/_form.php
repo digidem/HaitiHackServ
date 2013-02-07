@@ -2,11 +2,7 @@
 
 <?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'presence_before_earthquake'); ?>
-<?php echo $form->checkBox($model,'presence_before_earthquake'); ?>
-<?php echo $form->error($model,'presence_before_earthquake'); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -18,7 +14,7 @@
 			</div>
 
 
-<label for="Organisation">Belonging Organisation</label><?php 
+<label for="Organisation">Organisation</label><?php 
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'organisation0',
@@ -27,4 +23,8 @@
 							'style' => 'dropdownlist',
 							)
 						); ?>
-			
+<div class="row">
+		<?php echo $form->labelEx($model,'presence_before_earthquake'); ?>
+<?php echo $form->checkBox($model,'presence_before_earthquake'); ?>
+<?php echo $form->error($model,'presence_before_earthquake'); ?>
+	</div>			

@@ -21,6 +21,6 @@
 							'relation' => 'branchsites',
 							'fields' => 'branch_name',
 							'allowEmpty' => false,
-							'style' => 'checkbox',
+							'style' => 'dropDownList',
 							)
 						); ?>

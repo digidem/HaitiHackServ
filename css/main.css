@@ -47,38 +47,167 @@ body
 	font-size: 200%;
 }
 
+/* New CSS design */
+
+#menu-top {
+width:800px;
+list-style-type:none;
+text-align:center;
+border-radius: 10px;
+}
+
+
+#yw3 ul {
+margin:0;
+padding:0;
+list-style-type:none;
+text-align:center;
+border-radius: 10px;
+}
+
+
+#yw3 li {
+float:left;
+margin:auto;
+padding:0;
+margin:1px;
+background-color: #519CC6;
+}
+
+#yw3 li a {
+display:block;
+min-width:100px;
+width:auto;
+color:white;
+text-decoration:none;
+padding:5px;
+}
+
+#yw3 li a:hover {
+background-color: #b5c2c8;
+}
+
+#yw3 ul li ul {
+display:none;
+}
+
+
+#yw3 ul li:hover ul {
+display:block;
+}
+
+#yw3 li:hover ul li {
+float:none;
+}
+
+#yw3 li ul {
+position:absolute;
+}
+
+
+#menu-top ul {
+margin:0;
+padding:0;
+list-style-type:none;
+text-align:center;
+border-radius: 10px;
+}
+
+
+#menu-top li {
+float:left;
+margin:auto;
+padding:0;
+margin:1px;
+background-color: #519CC6;
+}
+
+#menu-top li a {
+display:block;
+min-width:100px;
+width:auto;
+color:white;
+text-decoration:none;
+padding:5px;
+}
+
+#menu-top li a:hover {
+background-color: #b5c2c8;
+}
+
+#menu-top ul li ul {
+display:none;
+}
+
+
+#menu-top ul li:hover ul {
+display:block;
+}
+
+#menu-top li:hover ul li {
+float:none;
+}
+
+#menu-top li ul {
+position:absolute;
+}
+
+
+/*
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	 background:white url(bg.gif) repeat-x left top; 
 }
 
 #mainmenu ul
 {
 	padding:6px 20px 5px 20px;
 	margin:0px;
+        list-style: none; margin: 0; padding: 0; position: relative; height: 30px;
 }
 
 #mainmenu ul li
 {
-	display: inline;
+	/*display: inline;*/
+    /*    display: block; height: 28px; float: left; overflow: visible;
+        
 }
 
+#mainmenu ul li:hover > ul { display: block; }
+
+/*
 #mainmenu ul li a
 {
-	color:#ffffff;
+	/*color:#ffffff;
 	background-color:transparent;
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
-	padding:5px 8px;
-}
+	padding:5px 8px; */
+       /* float: left; display: block;
+}*/
 
-#mainmenu ul li a:hover, #mainmenu ul li.active a
+/*
+#mainmenu ul li ul 
+{
+    display: none; position: absolute; top: 100%;
+    background: #000; color: #fff; height: auto;
+} */
+/*
+#mainmenu ul li ul li a { color:#ccc; padding: 4px 14px; display: block; }
+
+#mainmenu ul li ul li.active a,
+
+#mainmenu ul li ul li a:hover { color: #fff; }
+
+*/
+
+/* #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
 	color: #6399cd;
 	background-color:#EFF4FA;
 	text-decoration:none;
-}
+} */
 
 div.flash-error, div.flash-notice, div.flash-success
 {

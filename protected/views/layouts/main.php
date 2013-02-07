@@ -26,19 +26,34 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-	<div id="mainmenu">
+	<div id="menu-top">
 		<?php $this->widget('zii.widgets.CMenu',array(
+                        'activeCssClass'=>'active',
+                        'activateParents'=>true,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                                array('label'=>'Organisation', 'url'=>array('/organisation/index'), 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'Organisation Branch', 'url'=>array('/branchsite/index'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Organisation', 'url'=>array('/organisation/index'),
+                                'linkOptions'=>array('id'=>'menuOrganisation'),
+                                'itemOptions'=>array('id'=>'itemOrganisation'),
+                                     
+                                'items'=>array(
+                                      array('label'=>'Organisation branch','url'=>array('/branchsite/index')),
+                                      array('label'=>'Partners', 'url'=>array('partners/index')),                                         
+                                         ),
+                                'visible'=>!Yii::app()->user->isGuest),
+    
+                               // array('label'=>'Organisation Branch', 'url'=>array('/branchsite/index'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
-	</div><!-- mainmenu -->
+	</div>
+        
+        <!-- mainmenu -->
+        <div id="">
+            <?php echo "<br/><br/>" ?>
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
@@ -46,7 +61,8 @@
 	<?php endif?>
 
 	<?php echo $content; ?>
-
+        </div> 
+        
 	<div class="clear"></div>
 
 	<div id="footer">

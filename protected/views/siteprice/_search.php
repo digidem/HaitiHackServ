@@ -5,10 +5,7 @@
         'method'=>'get',
 )); ?>
 
-        <div class="row">
-                <?php echo $form->label($model,'id'); ?>
-                <?php echo $form->textField($model,'id'); ?>
-        </div>
+       
 
         <div class="row">
                 <?php echo $form->label($model,'prix_service'); ?>
@@ -22,12 +19,28 @@
 
         <div class="row">
                 <?php echo $form->label($model,'branchsite'); ?>
-                <?php ; ?>
+                 <?php 
+                $this->widget('application.components.Relation', array(
+                        'model' => $model,
+                        'relation' => 'branchsite0',
+                        'fields' => 'branch_name',
+                        'allowEmpty' => false,
+                        'style' => 'dropdownlist',
+                        )
+                ); ?>
         </div>
 
         <div class="row">
                 <?php echo $form->label($model,'services'); ?>
-                <?php ; ?>
+                <?php 
+        $this->widget('application.components.Relation', array(
+                        'model' => $model,
+                        'relation' => 'services0',
+                        'fields' => 'service_name',
+                        'allowEmpty' => false,
+                        'style' => 'dropdownlist',
+                        )
+                ); ?>
         </div>
 
         <div class="row buttons">

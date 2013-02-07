@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Categories'=>array('index'),
-	$model->id,
+	$model->category_name,
 );
 
 $this->menu=array(
@@ -13,21 +13,21 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Category #<?php echo $model->id; ?></h1>
+<h1>View Category : <?php echo $model->category_name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		//'id',
 		'category_name',
 		'description',
 	),
 )); ?>
 
 
-<br /><h2> This Branchsite belongs to this Category: </h2>
+<br /><h2>Organisation branch in this category: </h2>
 <ul><?php foreach($model->branchsites as $foreignobj) { 
 
-				printf('<li>%s</li>', CHtml::link($foreignobj->street_address, array('branchsite/view', 'id' => $foreignobj->id)));
+				printf('<li>%s</li>', CHtml::link($foreignobj->branch_name, array('branchsite/view', 'id' => $foreignobj->id)));
 
 				} ?></ul>

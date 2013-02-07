@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Services'=>array('index'),
-	$model->id,
+	$model->service_name,
 );
 
 $this->menu=array(
@@ -13,21 +13,22 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Services #<?php echo $model->id; ?></h1>
+<h1>View Services : <?php echo $model->service_name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		//'id',
 		'service_name',
 		'description',
 	),
 )); ?>
 
 
-<br /><h2> This SitePrice belongs to this Services: </h2>
+<br /><h2> Service can be found : </h2>
 <ul><?php foreach($model->sitePrices as $foreignobj) { 
 
-				printf('<li>%s</li>', CHtml::link($foreignobj->prix_service, array('siteprice/view', 'id' => $foreignobj->id)));
+				printf('<li>%s service price => %d</li>',  CHtml::link($foreignobj->branchsite0['branch_name'], array('siteprice/view', 'id' => $foreignobj->id)),CHtml::encode($foreignobj->prix_service));
+                              //  printf('<li>%s</li>',CHtml::encode($foreignobj->services0['service_name']));
 
 				} ?></ul>

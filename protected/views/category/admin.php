@@ -39,9 +39,9 @@ data: $(this).serialize()
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
 		'category_name',
-		'description',
+		//'description',
 		array(
 			'class'=>'CButtonColumn',
 		),

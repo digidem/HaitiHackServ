@@ -8,18 +8,19 @@
 <?php echo $form->error($model,'name'); ?>
 	</div>
 
+<div class="row">
+		<?php echo $form->labelEx($model,'acronym'); ?>
+<?php echo $form->textField($model,'acronym',array('size'=>20,'maxlength'=>20)); ?>
+<?php echo $form->error($model,'acronym'); ?>
+	</div>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
 <?php echo $form->textField($model,'email',array('size'=>45,'maxlength'=>45)); ?>
 <?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'acronym'); ?>
-<?php echo $form->textField($model,'acronym',array('size'=>20,'maxlength'=>20)); ?>
-<?php echo $form->error($model,'acronym'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'url'); ?>
 <?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>250)); ?>

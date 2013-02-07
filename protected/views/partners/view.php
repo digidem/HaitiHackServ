@@ -13,15 +13,16 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Partners #<?php echo $model->id; ?></h1>
+<h1>View Partners : <?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'presence_before_earthquake',
-		'name',
+		//'id',
+                'name',
 		'organisation0.name',
+		'presence_before_earthquake',
+		
 	),
 )); ?>
 

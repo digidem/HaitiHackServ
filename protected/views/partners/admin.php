@@ -39,10 +39,10 @@ data: $(this).serialize()
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'presence_before_earthquake',
-		'name',
-		'organisation',
+		//'id',
+                'name',
+		
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Categories'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	$model->category_name=>array('view','id'=>$model->id),
 	Yii::t('app', 'Update'),
 );
 
@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1> Update Category #<?php echo $model->id; ?> </h1>
+<h1> Update Category : <?php echo $model->category_name; ?> </h1>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

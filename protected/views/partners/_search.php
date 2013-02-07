@@ -5,9 +5,9 @@
         'method'=>'get',
 )); ?>
 
-        <div class="row">
-                <?php echo $form->label($model,'id'); ?>
-                <?php echo $form->textField($model,'id'); ?>
+       <div class="row">
+                <?php echo $form->label($model,'name'); ?>
+                <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>250)); ?>
         </div>
 
         <div class="row">
@@ -15,14 +15,19 @@
                 <?php echo $form->checkBox($model,'presence_before_earthquake'); ?>
         </div>
 
-        <div class="row">
-                <?php echo $form->label($model,'name'); ?>
-                <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>250)); ?>
-        </div>
+        
 
         <div class="row">
                 <?php echo $form->label($model,'organisation'); ?>
-                <?php ; ?>
+                <?php 
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'organisation0',
+							'fields' => 'name',
+							'allowEmpty' => false,
+							'style' => 'dropdownlist',
+							)
+						); ?>
         </div>
 
         <div class="row buttons">

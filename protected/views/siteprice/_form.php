@@ -2,6 +2,28 @@
 
 <?php echo $form->errorSummary($model); ?>
 
+<label for="Services">Services</label>
+    <?php 
+        $this->widget('application.components.Relation', array(
+                        'model' => $model,
+                        'relation' => 'services0',
+                        'fields' => 'service_name',
+                        'allowEmpty' => false,
+                        'style' => 'dropdownlist',
+                        )
+                ); ?>
+
+<label for="Branchsite">Organisation Branch</label>
+    <?php 
+        $this->widget('application.components.Relation', array(
+                        'model' => $model,
+                        'relation' => 'branchsite0',
+                        'fields' => 'branch_name',
+                        'allowEmpty' => false,
+                        'style' => 'dropdownlist',
+                        )
+                ); ?>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'prix_service'); ?>
 <?php echo $form->textField($model,'prix_service'); ?>
@@ -21,22 +43,6 @@
 			</div>
 
 
-<label for="Branchsite">Belonging Branchsite</label><?php 
-					$this->widget('application.components.Relation', array(
-							'model' => $model,
-							'relation' => 'branchsite0',
-							'fields' => 'street_address',
-							'allowEmpty' => false,
-							'style' => 'dropdownlist',
-							)
-						); ?>
-			<label for="Services">Belonging Services</label><?php 
-					$this->widget('application.components.Relation', array(
-							'model' => $model,
-							'relation' => 'services0',
-							'fields' => 'service_name',
-							'allowEmpty' => false,
-							'style' => 'dropdownlist',
-							)
-						); ?>
+
+			
 			
