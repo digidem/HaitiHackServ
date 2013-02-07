@@ -15,11 +15,11 @@
 	</div>
 
 
-<label for="Branchsite">Belonging Branchsite</label><?php 
+<label for="Branchsite">Branchsite</label><?php 
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'branchsites',
-							'fields' => 'street_address',
+							'fields' => 'branch_name',
 							'allowEmpty' => false,
 							'style' => 'checkbox',
 							)

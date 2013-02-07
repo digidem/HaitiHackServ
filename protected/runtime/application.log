@@ -7,3 +7,75 @@ Stack trace:
 REQUEST_URI=/kofa/index.php?r=branchsite/create&returnTo=category%2Fcreate
 HTTP_REFERER=http://localhost/kofa/index.php?r=category/create
 ---
+2013/02/06 19:41:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "branchsite/create".' in C:\wamp\www\yii1113\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii1113\framework\web\CWebApplication.php(141): CWebApplication->runController('branchsite/crea...')
+#1 C:\wamp\www\yii1113\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\kofa\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/kofa/index.php?r=branchsite/create&returnTo=category%2Fcreate
+HTTP_REFERER=http://localhost/kofa/index.php?r=category/update&id=1
+---
+2013/02/06 22:14:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "commune/create".' in C:\wamp\www\yii1113\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii1113\framework\web\CWebApplication.php(141): CWebApplication->runController('commune/create')
+#1 C:\wamp\www\yii1113\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\kofa\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/kofa/index.php?r=commune/create&returnTo=quartier%2Fcreate
+HTTP_REFERER=http://localhost/kofa/index.php?r=quartier/create&returnTo=branchsite%2Fcreate
+---
+2013/02/06 22:33:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "departement/create".' in C:\wamp\www\yii1113\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii1113\framework\web\CWebApplication.php(141): CWebApplication->runController('departement/cre...')
+#1 C:\wamp\www\yii1113\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\kofa\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/kofa/index.php?r=departement/create&returnTo=commune%2Fcreate
+HTTP_REFERER=http://localhost/kofa/index.php?r=commune/create&returnTo=quartier%2Fcreate
+---
+2013/02/06 22:48:49 [warning] [application] Failed to set unsafe attribute "Category" of "Branchsite".
+in C:\wamp\www\kofa\protected\controllers\BranchsiteController.php (135)
+in C:\wamp\www\kofa\protected\controllers\BranchsiteController.php (47)
+in C:\wamp\www\kofa\index.php (13)
+2013/02/06 22:48:55 [warning] [application] Failed to set unsafe attribute "Category" of "Branchsite".
+in C:\wamp\www\kofa\protected\controllers\BranchsiteController.php (135)
+in C:\wamp\www\kofa\protected\controllers\BranchsiteController.php (47)
+in C:\wamp\www\kofa\index.php (13)
+2013/02/06 22:49:02 [warning] [application] Failed to set unsafe attribute "Category" of "Branchsite".
+in C:\wamp\www\kofa\protected\controllers\BranchsiteController.php (51)
+in C:\wamp\www\kofa\index.php (13)
+2013/02/06 23:26:29 [error] [exception.CException] exception 'CException' with message 'Property "Quartier.branch_name" is not defined.' in C:\wamp\www\yii1113\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii1113\framework\db\ar\CActiveRecord.php(143): CComponent->__get('branch_name')
+#1 C:\wamp\www\kofa\protected\components\Relation.php(289): CActiveRecord->__get('branch_name')
+#2 C:\wamp\www\kofa\protected\components\Relation.php(422): Relation->getRelatedData()
+#3 C:\wamp\www\kofa\protected\components\Relation.php(595): Relation->renderBelongsToSelection()
+#4 C:\wamp\www\yii1113\framework\web\CBaseController.php(173): Relation->run()
+#5 C:\wamp\www\kofa\protected\views\branchsite\_form.php(56): CBaseController->widget('application.com...', Array)
+#6 C:\wamp\www\yii1113\framework\web\CBaseController.php(126): require('C:\wamp\www\kof...')
+#7 C:\wamp\www\yii1113\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\kof...', Array, true)
+#8 C:\wamp\www\yii1113\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\kof...', Array, true)
+#9 C:\wamp\www\kofa\protected\views\branchsite\update.php(26): CController->renderPartial('_form', Array)
+#10 C:\wamp\www\yii1113\framework\web\CBaseController.php(126): require('C:\wamp\www\kof...')
+#11 C:\wamp\www\yii1113\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\kof...', Array, true)
+#12 C:\wamp\www\yii1113\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\kof...', Array, true)
+#13 C:\wamp\www\yii1113\framework\web\CController.php(782): CController->renderPartial('update', Array, true)
+#14 C:\wamp\www\kofa\protected\controllers\BranchsiteController.php(83): CController->render('update', Array)
+#15 C:\wamp\www\yii1113\framework\web\actions\CInlineAction.php(49): BranchsiteController->actionUpdate()
+#16 C:\wamp\www\yii1113\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#17 C:\wamp\www\yii1113\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 C:\wamp\www\yii1113\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#19 C:\wamp\www\yii1113\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 C:\wamp\www\yii1113\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 C:\wamp\www\yii1113\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 C:\wamp\www\yii1113\framework\web\CController.php(291): CFilterChain->run()
+#23 C:\wamp\www\yii1113\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 C:\wamp\www\yii1113\framework\web\CWebApplication.php(282): CController->run('update')
+#25 C:\wamp\www\yii1113\framework\web\CWebApplication.php(141): CWebApplication->runController('branchsite/upda...')
+#26 C:\wamp\www\yii1113\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#27 C:\wamp\www\kofa\index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/kofa/index.php?r=branchsite/update&id=1
+HTTP_REFERER=http://localhost/kofa/index.php?r=branchsite/view&id=1
+---
