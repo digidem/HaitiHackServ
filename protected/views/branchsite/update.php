@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Branchsites'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	$model->branch_name=>array('view','id'=>$model->id),
 	Yii::t('app', 'Update'),
 );
 
@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1> Update Branchsite #<?php echo $model->id; ?> </h1>
+<h1> Update Organisation branch : <?php echo $model->branch_name; ?> </h1>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

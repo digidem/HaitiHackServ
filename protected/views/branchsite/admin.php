@@ -39,17 +39,16 @@ data: $(this).serialize()
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
+                'branch_name',
+                //'organisation0.name',
 		'street_address',
-		'longitude',
-		'latitude',
-		'url',
+                //'quartier0.name'
+		//'longitude',
+		//'latitude',
+		//'url',
 		'site_phone',
-		/*
-		'branch_name',
-		'organisation',
-		'quartier',
-		*/
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

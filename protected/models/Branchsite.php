@@ -52,6 +52,8 @@ class Branchsite extends CActiveRecord
 			'branch_name' => Yii::t('app', 'Branch Name'),
 			'organisation' => Yii::t('app', 'Organisation'),
 			'quartier' => Yii::t('app', 'Quartier'),
+                        'organisation0.name'=> Yii::t('app','Organisation'),
+                        'quartier0.name'=>Yii::t('app','Quartier'),
 		);
 	}
 
@@ -81,4 +83,19 @@ class Branchsite extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        // List all of the organisation
+        
+         public function getOrganisations(){
+            return CHtml::listData(Organisation::model()->findAll(),'id','name');
+                
+        }
+        
+        // return one organisation
+        
+        public function getOrganisation()
+            {
+                $oneOrganisation = $this->getOrganisations();
+                return $oneOrganisation[$this->name];
+            }
 }

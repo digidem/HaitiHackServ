@@ -13,15 +13,15 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Organisation #<?php echo $model->id; ?></h1>
+<h1>View Organisation #<?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		//'id',
 		'name',
-		'email',
-		'acronym',
+                'acronym',
+		'email',		
 		'url',
 		'present_before_earthquake',
 		'coverage',

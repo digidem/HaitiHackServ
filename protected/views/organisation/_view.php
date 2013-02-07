@@ -1,21 +1,19 @@
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-	<?php echo CHtml::encode($data->name); ?>
+	<?php echo CHtml::link(CHtml::encode($data->name), array('view', 'id'=>$data->id)); ?>
 	<br />
+        
+        <b><?php echo CHtml::encode($data->getAttributeLabel('acronym')); ?>:</b>
+	<?php echo CHtml::encode($data->acronym); ?>
+	<br />
+	
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
 	<?php echo CHtml::encode($data->email); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('acronym')); ?>:</b>
-	<?php echo CHtml::encode($data->acronym); ?>
-	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('url')); ?>:</b>
 	<?php echo CHtml::encode($data->url); ?>
 	<br />
