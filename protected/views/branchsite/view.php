@@ -41,9 +41,11 @@ $this->menu=array(
 
 				printf('<li>%s</li>', CHtml::link($foreignobj->category_name, array('category/view', 'id' => $foreignobj->id)));
 
-				} ?></ul><br /><h2> This SitePrice belongs to this Branchsite: </h2>
+				} ?></ul><br />
+                                
+ <h2> Price of service at this organisation branch: </h2>
 <ul><?php foreach($model->sitePrices as $foreignobj) { 
 
-				printf('<li>%s</li>', CHtml::link($foreignobj->prix_service, array('siteprice/view', 'id' => $foreignobj->id)));
+				printf('<li><strong>%s</strong> for a price of : %s</li>',CHtml::encode($foreignobj->services0['service_name']), CHtml::link($foreignobj->prix_service, array('siteprice/view', 'id' => $foreignobj->id)));
 
 				} ?></ul>

@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1> Update Departement #<?php echo $model->id; ?> </h1>
+<h1> Update Departement : <?php echo $model->name; ?> </h1>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

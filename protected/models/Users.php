@@ -2,6 +2,10 @@
 
 class Users extends CActiveRecord
 {
+    
+    const LEVEL_ADMIN = 'Admin';
+    const LEVEL_USER = 'Basic';
+    
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -68,4 +72,28 @@ class Users extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        
+        // to get all the level 
+        
+        public function getLevels(){
+            return array(
+                self::LEVEL_ADMIN=>'Admin',
+                self::LEVEL_USER=>'Basic',
+                               
+            );            
+        }
+        
+        // Get one level of user 
+        
+        public function getLevel(){
+            $level = $this->getLevels();
+            return $level[$this->level];
+        }
+        
+        //Encrypt the password with MD5 
+        
+        public function encrypt($password){                
+                return md5($password);            
+               }
 }

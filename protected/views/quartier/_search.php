@@ -5,20 +5,9 @@
         'method'=>'get',
 )); ?>
 
-        <div class="row">
-                <?php echo $form->label($model,'id'); ?>
-                <?php echo $form->textField($model,'id'); ?>
-        </div>
+        
 
-        <div class="row">
-                <?php echo $form->label($model,'longitude'); ?>
-                <?php echo $form->textField($model,'longitude',array('size'=>45,'maxlength'=>45)); ?>
-        </div>
-
-        <div class="row">
-                <?php echo $form->label($model,'latitude'); ?>
-                <?php echo $form->textField($model,'latitude',array('size'=>45,'maxlength'=>45)); ?>
-        </div>
+       
 
         <div class="row">
                 <?php echo $form->label($model,'name'); ?>
@@ -27,7 +16,15 @@
 
         <div class="row">
                 <?php echo $form->label($model,'commune'); ?>
-                <?php ; ?>
+                <?php 
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'commune0',
+							'fields' => 'name',
+							'allowEmpty' => false,
+							'style' => 'dropdownlist',
+							)
+						); ?>
         </div>
 
         <div class="row buttons">

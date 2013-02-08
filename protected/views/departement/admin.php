@@ -39,9 +39,9 @@ data: $(this).serialize()
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'longitude',
-		'latitude',
+		//'id',
+		//'longitude',
+		//'latitude',
 		'name',
 		array(
 			'class'=>'CButtonColumn',

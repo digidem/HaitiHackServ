@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Communes'=>array(Yii::t('app', 'index')),
+	'Users'=>array(Yii::t('app', 'index')),
 	Yii::t('app', 'Manage'),
 );
 
 $this->menu=array(
 		array('label'=>Yii::t('app',
-				'List Commune'), 'url'=>array('index')),
-		array('label'=>Yii::t('app', 'Create Commune'),
+				'List Users'), 'url'=>array('index')),
+		array('label'=>Yii::t('app', 'Create Users'),
 				'url'=>array('create')),
 			);
 
@@ -17,7 +17,7 @@ $this->menu=array(
 				return false;
 				});
 			$('.search-form form').submit(function(){
-				$.fn.yiiGridView.update('commune-grid', {
+				$.fn.yiiGridView.update('users-grid', {
 data: $(this).serialize()
 });
 				return false;
@@ -25,7 +25,7 @@ data: $(this).serialize()
 			");
 		?>
 
-<h1> Manage&nbsp;Communes</h1>
+<h1> Manage&nbsp;Users</h1>
 
 <?php echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -35,16 +35,16 @@ data: $(this).serialize()
 </div>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'commune-grid',
+	'id'=>'users-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-                'name',
-		'departement0.name',
-		//'id',
-		//'longitude',
-		//'latitude',
-		
+		'id',
+		'fullname',
+		'username',
+		'password',
+		'email',
+		'level',
 		array(
 			'class'=>'CButtonColumn',
 		),

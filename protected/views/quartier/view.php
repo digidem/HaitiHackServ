@@ -13,23 +13,24 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Quartier #<?php echo $model->id; ?></h1>
+<h1>View Quartier : <?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'longitude',
+		//'id',
+                'name',
+		'commune0.name',
+                'longitude',
 		'latitude',
-		'name',
-		'commune0.longitude',
+		
 	),
 )); ?>
 
 
-<br /><h2> This Branchsite belongs to this Quartier: </h2>
+<br /><h2> Organisation Branch in this  Quartier: </h2>
 <ul><?php foreach($model->branchsites as $foreignobj) { 
 
-				printf('<li>%s</li>', CHtml::link($foreignobj->street_address, array('branchsite/view', 'id' => $foreignobj->id)));
+				printf('<li>%s</li>', CHtml::link($foreignobj->branch_name, array('branchsite/view', 'id' => $foreignobj->id)));
 
 				} ?></ul>

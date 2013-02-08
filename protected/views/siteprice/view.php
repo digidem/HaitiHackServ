@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Site Prices'=>array('index'),
-	$model->id,
+	$model->branchsite0['branch_name'],
 );
 
 $this->menu=array(
@@ -13,16 +13,17 @@ $this->menu=array(
 );
 ?>
 
-<h1>View SitePrice #<?php echo $model->id; ?></h1>
+<h1>View branch service price: <?php echo $model->branchsite0['branch_name']; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		//'id',
+                'branchsite0.branch_name',
+		'services0.service_name',
 		'prix_service',
 		'referral_necessary',
-		'branchsite0.street_address',
-		'services0.service_name',
+		
 	),
 )); ?>
 

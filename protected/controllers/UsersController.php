@@ -1,10 +1,9 @@
 <?php
 
-class BranchsiteController extends Controller
+class UsersController extends Controller
 {
 	public $layout='//layouts/column2';
 	private $_model;
-       
 
 	public function filters()
 	{
@@ -15,23 +14,18 @@ class BranchsiteController extends Controller
 
 	public function accessRules()
 	{
-		
-            $user = new Users;
-            return array(
+		return array(
 			array('allow',  
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'users'=>array('admin'),
 			),
 			array('allow', 
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'users'=>array('admin'),
 			),
 			array('allow', 
 				'actions'=>array('admin','delete'),
-                                'users'=>array('admin'),
-                            //'roles'=>array('Admin'),
-                               // 'expression'=>'Yii::app()->controller->isAdmin()',
-				//'users'=>array('admin'),//$user->model()->level=>array('Admin')//,
+				'users'=>array('admin'),
 			),
 			array('deny', 
 				'users'=>array('*'),
@@ -48,16 +42,15 @@ class BranchsiteController extends Controller
 
 	public function actionCreate()
 	{
-		$model=new Branchsite;
+		$model=new Users;
 
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Branchsite']))
+		if(isset($_POST['Users']))
 		{
-			$model->attributes=$_POST['Branchsite'];
-			if(isset($_POST['Branchsite']['Category']))
-		$model->categories = $_POST['Branchsite']['Category'];
-
+			$model->attributes=$_POST['Users'];
+                        $model->password = $model->encrypt($model->password);
+		
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -74,12 +67,11 @@ class BranchsiteController extends Controller
 
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Branchsite']))
+		if(isset($_POST['Users']))
 		{
-			$model->attributes=$_POST['Branchsite'];
-			if(isset($_POST['Branchsite']['Category']))
-		$model->categories = $_POST['Branchsite']['Category'];
-
+			$model->attributes=$_POST['Users'];
+                        $model->password = $model->encrypt($model->password);
+		
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -105,7 +97,7 @@ class BranchsiteController extends Controller
 
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Branchsite');
+		$dataProvider=new CActiveDataProvider('Users');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -113,9 +105,9 @@ class BranchsiteController extends Controller
 
 	public function actionAdmin()
 	{
-		$model=new Branchsite('search');
-		if(isset($_GET['Branchsite']))
-			$model->attributes=$_GET['Branchsite'];
+		$model=new Users('search');
+		if(isset($_GET['Users']))
+			$model->attributes=$_GET['Users'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -127,7 +119,7 @@ class BranchsiteController extends Controller
 		if($this->_model===null)
 		{
 			if(isset($_GET['id']))
-				$this->_model=Branchsite::model()->findbyPk($_GET['id']);
+				$this->_model=Users::model()->findbyPk($_GET['id']);
 			if($this->_model===null)
 				throw new CHttpException(404, Yii::t('app', 'The requested page does not exist.'));
 		}
@@ -136,13 +128,10 @@ class BranchsiteController extends Controller
 
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='branchsite-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='users-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-        
-         
-        
 }

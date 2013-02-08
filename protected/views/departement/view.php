@@ -13,22 +13,23 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Departement #<?php echo $model->id; ?></h1>
+<h1>View Departement : <?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		//'id',
+                'name',
 		'longitude',
 		'latitude',
-		'name',
+		
 	),
 )); ?>
 
 
-<br /><h2> This Commune belongs to this Departement: </h2>
+<br /><h2> Commune in this Departement: </h2>
 <ul><?php foreach($model->communes as $foreignobj) { 
 
-				printf('<li>%s</li>', CHtml::link($foreignobj->longitude, array('commune/view', 'id' => $foreignobj->id)));
+				printf('<li>%s</li>', CHtml::link($foreignobj->name, array('commune/view', 'id' => $foreignobj->id)));
 
 				} ?></ul>
