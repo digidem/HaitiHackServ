@@ -68,7 +68,9 @@
                                       
                                          ),
                                 'visible'=>!Yii::app()->user->isGuest),
-                            
+								
+                                 array('label'=>'Map', 'url'=>array('/map/default/index'),
+                                'visible'=>!Yii::app()->user->isGuest),                           
     
                                // array('label'=>'Organisation Branch', 'url'=>array('/branchsite/index'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

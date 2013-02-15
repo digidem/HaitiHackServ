@@ -30,7 +30,7 @@ return array(
                             'ext.gtc',
                         ),
 		),
-		
+		'map',		
 	),
 
 	// application components
@@ -59,7 +59,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=kofaviv',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'test123',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		
