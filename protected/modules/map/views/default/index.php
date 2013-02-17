@@ -1,11 +1,11 @@
 <?php
-  //$this->layout = 'simple';
   if (Yii::app()->user->isGuest) {
     // something else needs to happen
     echo 'You have to log in to interact with the map';
   } else {
     //$BASE_URL="http://localhost:8000/";
     $BASE_URL="http://digidem.github.com/HaitiHackMap/";
+    $this->layout = 'simple';
 ?>
     <div id="app"></div>
     <link rel="stylesheet" href="<?php print $BASE_URL ?>styles/main.css">
