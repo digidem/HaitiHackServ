@@ -8,7 +8,7 @@
 <?php echo $form->error($model,'branch_name'); ?>
 	</div>
 
-<label for="Organisation">Organisation</label><?php 
+<label for="Organisation">Organisation</label><?php
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'organisation0',
@@ -18,7 +18,7 @@
 							)
 						); ?>
 
-<label for="Quartier">Quartier</label><?php 
+<label for="Quartier">Quartier</label><?php
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'quartier0',
@@ -47,40 +47,29 @@
 	</div>
 
 	<div class="row">
-		
-<?php echo 'Lon : '. $form->textField($model,'longitude',array('size'=>20,'maxlength'=>45)).' Lat'.$form->textField($model,'latitude',array('size'=>20,'maxlength'=>45)); ?>
-<?php echo $form->error($model,'longitude'); 
-?>
+    Lat: <?php echo $form->textField($model, 'longitude', array('size'=>20, 'maxlength' => 45)); ?>
 
+    Lon: <?php echo $form->textField($model, 'latitude', array('size'=>20, 'maxlength' => 45)); ?>
+
+    <?php echo $form->error($model,'longitude'); ?>
+	</div>
+
+	<div class="row">
 
 	</div>
 
 	<div class="row">
-		
-	</div>
-
-	
-
-	
-
-	
+  </div>
 
 	<div class="row">
-			</div>
+  </div>
 
-	<div class="row">
-			</div>
-
-
-
-			
-			<label for="Category">Category</label><?php 
-					$this->widget('application.components.Relation', array(
-							'model' => $model,
-							'relation' => 'categories',
-							'fields' => 'category_name',
-							'allowEmpty' => false,
-							'style' => 'checkbox',
-							)
-						); ?>
-			
+  <label for="Category">Category</label><?php
+      $this->widget('application.components.Relation', array(
+          'model' => $model,
+          'relation' => 'categories',
+          'fields' => 'category_name',
+          'allowEmpty' => false,
+          'style' => 'checkbox',
+          )
+        ); ?>
