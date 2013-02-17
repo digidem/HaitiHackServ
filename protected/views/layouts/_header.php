@@ -1,3 +1,7 @@
+<div id="header">
+    <div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+</div>
+
 <div id="menu-top">
 <?php $this->widget('zii.widgets.CMenu', array(
     'activeCssClass'=>'active',
