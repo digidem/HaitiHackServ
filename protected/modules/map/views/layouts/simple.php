@@ -5,36 +5,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="language" content="en" />
   <?php echo $this->renderPartial('//layouts/_stylesheets'); ?>
-  <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
-
-<div class="container" id="page">
-
   <?php echo $this->renderPartial('//layouts/_header') ?>
 
-  <div>
-    <br/><br/>
-
-    <?php if(isset($this->breadcrumbs)):?>
-      <?php $this->widget('zii.widgets.CBreadcrumbs', array(
-        'links'=>$this->breadcrumbs,
-      )); ?><!-- breadcrumbs -->
-    <?php endif ?>
-
-    <?php echo $content; ?>
-  </div>
-
-  <div class="clear"></div>
+  <?php echo $content; ?>
 
   <div id="footer">
     Copyright &copy; <?php echo date('Y'); ?> KOFAVIV<br/>
     All Rights Reserved.<br/>
-
   </div>
-
-</div>
-
 </body>
 </html>
