@@ -26,6 +26,7 @@ class Departement extends CActiveRecord
 	{
 		return array(
 			'communes' => array(self::HAS_MANY, 'Commune', 'departement'),
+		    'branchsites' => array(self::HAS_MANY, 'Branchsite', 'departement'),
 		);
 	}
 

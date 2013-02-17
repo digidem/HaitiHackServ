@@ -28,6 +28,7 @@ class Commune extends CActiveRecord
 		return array(
 			'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),
 			'quartiers' => array(self::HAS_MANY, 'Quartier', 'commune'),
+		    'branchsites' => array(self::HAS_MANY, 'Branchsite', 'commune'),
 		);
 	}
 

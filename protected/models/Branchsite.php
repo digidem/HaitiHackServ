@@ -20,7 +20,17 @@ class Branchsite extends CActiveRecord
 			array('street_address, url, branch_name', 'length', 'max'=>250),
 			array('longitude, latitude, site_phone', 'length', 'max'=>45),
 			array('id, street_address, longitude, latitude, url, site_phone, branch_name, organisation, quartier', 'safe', 'on'=>'search'),
+		    //array('street_address', 'geocodeValidator'),
 		);
+	}
+	
+	/**
+	 * @param string $attribute the name of the attribute to be validated
+	 * @param array $params options specified in the validation rule
+	 */
+	public function geocodeValidator($attribute,$params) { 
+	   $results = geocodeAddress($attributes);
+	
 	}
 
 	public function relations()
@@ -30,6 +40,8 @@ class Branchsite extends CActiveRecord
 			'organisation0' => array(self::BELONGS_TO, 'Organisation', 'organisation'),
 			'categories' => array(self::MANY_MANY, 'Category', 'branchsite_has_category(branchsite, category)'),
 			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'branchsite'),
+		    'commune0' => array(self::BELONGS_TO, 'Commune', 'commune'),
+		    'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),
 		);
 	}
 
@@ -51,9 +63,17 @@ class Branchsite extends CActiveRecord
 			'site_phone' => Yii::t('app', 'Site Phone'),
 			'branch_name' => Yii::t('app', 'Branch Name'),
 			'organisation' => Yii::t('app', 'Organisation'),
+
+		    'commune' => Yii::t('app', 'Commune'),
+
+		    'departement' => Yii::t('app', 'Departement'),
 			'quartier' => Yii::t('app', 'Quartier'),
                         'organisation0.name'=> Yii::t('app','Organisation'),
                         'quartier0.name'=>Yii::t('app','Quartier'),
+
+		    'commune0.name'=> Yii::t('app','Commune'),
+
+		    'departement0.name'=> Yii::t('app','Departement'),
 		);
 	}
 

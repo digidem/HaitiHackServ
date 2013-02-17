@@ -18,6 +18,28 @@
 							)
 						); ?>
 
+<label for="Departement">Departement</label><?php
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'departement0',
+							'fields' => 'name',
+							'allowEmpty' => false,
+							'style' => 'dropdownlist',
+							)
+						); ?>
+
+<label for="Commune">Commune</label><?php
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'commune0',
+							'fields' => 'name',
+							'allowEmpty' => true,
+							'style' => 'dropdownlist',
+							)
+						); ?>
+
+
+
 <label for="Quartier">Quartier</label><?php
 					$this->widget('application.components.Relation', array(
 							'model' => $model,
@@ -27,7 +49,7 @@
 							'style' => 'dropdownlist',
 							)
 						); ?>
-
+						
 	<div class="row">
 		<?php echo $form->labelEx($model,'street_address'); ?>
 <?php echo $form->textField($model,'street_address',array('size'=>60,'maxlength'=>250)); ?>
@@ -72,4 +94,8 @@
           'allowEmpty' => false,
           'style' => 'checkbox',
           )
-        ); ?>
+        ); 
+
+
+
+?>

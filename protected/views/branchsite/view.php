@@ -20,6 +20,8 @@ $this->menu=array(
 	'attributes'=>array(
 		//'id',
                 'branch_name',
+                'departement0.name',
+                'commune0.name',
                 'organisation0.name',
                 'quartier0.name',
 		'street_address',
