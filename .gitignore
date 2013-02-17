@@ -167,3 +167,4 @@ pip-log.txt
 #haitihack project specific
 assets/*
 *~
+protected/runtime/application.log
