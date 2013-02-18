@@ -15,7 +15,10 @@
     <script src="<?php print $BASE_URL ?>scripts/plugins.js"></script>
 
     <script>
+      window.categories_url = "index.php?r=category/index&format=json";
+      window.results_url = "results.json";
       L.Icon.Default.imagePath = "<?php print $BASE_URL ?>images"
+      new window.App.Router();
     </script>
 <?php
   }
