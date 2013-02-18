@@ -109,8 +109,9 @@ class CategoryController extends Controller
 		else
 		{
 			$dataProvider = new CActiveDataProvider('Category');
-			$data = array('dataProvider' => $dataProvider);
-			$this->render('index', $data);
+			$this->render('index', array(
+				'dataProvider' => $dataProvider,
+			));
 		}
 	}
 
