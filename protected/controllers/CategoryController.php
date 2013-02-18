@@ -50,7 +50,7 @@ class CategoryController extends Controller
 		{
 			$model->attributes=$_POST['Category'];
 			if(isset($_POST['Category']['Branchsite']))
-		$model->branchsites = $_POST['Category']['Branchsite'];
+				$model->branchsites = $_POST['Category']['Branchsite'];
 
 
 			if($model->save())
