@@ -99,10 +99,19 @@ class CategoryController extends Controller
 
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Category');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if (isset($_GET['format']) && $_GET['format'] == "json")
+		{
+			header('Content-type: application/json');
+			$models = Category::model()->findAll();
+			echo CJSON::encode($models);
+			Yii::app()->end();
+		}
+		else
+		{
+			$dataProvider = new CActiveDataProvider('Category');
+			$data = array('dataProvider' => $dataProvider);
+			$this->render('index', $data);
+		}
 	}
 
 	public function actionAdmin()
