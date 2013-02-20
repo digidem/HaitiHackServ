@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
 	public function actionIndex()
 	{
-		if (isset($_GET['format']) && $_GET['format'] == "json")
+		if (Yii::app()->request->isAjaxRequest)
 		{
 			header('Content-type: application/json');
 			$models = Category::model()->findAll();
