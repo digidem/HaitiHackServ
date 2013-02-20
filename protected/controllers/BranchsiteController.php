@@ -4,40 +4,6 @@ class BranchsiteController extends Controller
 {
 	public $layout='//layouts/column2';
 	private $_model;
-       
-
-	public function filters()
-	{
-		return array(
-			'accessControl', 
-		);
-	}
-
-	public function accessRules()
-	{
-		
-            $user = new Users;
-            return array(
-			array('allow',  
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', 
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', 
-				'actions'=>array('admin','delete'),
-                                'users'=>array('admin'),
-                            //'roles'=>array('Admin'),
-                               // 'expression'=>'Yii::app()->controller->isAdmin()',
-				//'users'=>array('admin'),//$user->model()->level=>array('Admin')//,
-			),
-			array('deny', 
-				'users'=>array('*'),
-			),
-		);
-	}
 
 	public function actionView()
 	{

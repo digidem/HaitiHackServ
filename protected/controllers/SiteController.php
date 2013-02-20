@@ -22,6 +22,14 @@ class SiteController extends Controller
 	}
 
 	/**
+	 * Override the default security
+	 */
+	public function filters()
+	{
+		return array();
+	}
+
+	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
