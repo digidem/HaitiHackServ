@@ -21,7 +21,7 @@ class OrganisationController extends Controller
 		if(isset($_POST['Organisation']))
 		{
 			$model->attributes=$_POST['Organisation'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class OrganisationController extends Controller
 		if(isset($_POST['Organisation']))
 		{
 			$model->attributes=$_POST['Organisation'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

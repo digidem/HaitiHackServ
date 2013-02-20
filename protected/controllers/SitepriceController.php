@@ -21,7 +21,7 @@ class SitepriceController extends Controller
 		if(isset($_POST['SitePrice']))
 		{
 			$model->attributes=$_POST['SitePrice'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class SitepriceController extends Controller
 		if(isset($_POST['SitePrice']))
 		{
 			$model->attributes=$_POST['SitePrice'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

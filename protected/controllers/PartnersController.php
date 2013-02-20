@@ -21,7 +21,7 @@ class PartnersController extends Controller
 		if(isset($_POST['Partners']))
 		{
 			$model->attributes=$_POST['Partners'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class PartnersController extends Controller
 		if(isset($_POST['Partners']))
 		{
 			$model->attributes=$_POST['Partners'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

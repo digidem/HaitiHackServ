@@ -21,7 +21,7 @@ class CommuneController extends Controller
 		if(isset($_POST['Commune']))
 		{
 			$model->attributes=$_POST['Commune'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class CommuneController extends Controller
 		if(isset($_POST['Commune']))
 		{
 			$model->attributes=$_POST['Commune'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

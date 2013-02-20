@@ -21,7 +21,7 @@ class QuartierController extends Controller
 		if(isset($_POST['Quartier']))
 		{
 			$model->attributes=$_POST['Quartier'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class QuartierController extends Controller
 		if(isset($_POST['Quartier']))
 		{
 			$model->attributes=$_POST['Quartier'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

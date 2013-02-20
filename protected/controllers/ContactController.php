@@ -21,7 +21,7 @@ class ContactController extends Controller
 		if(isset($_POST['Contact']))
 		{
 			$model->attributes=$_POST['Contact'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class ContactController extends Controller
 		if(isset($_POST['Contact']))
 		{
 			$model->attributes=$_POST['Contact'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

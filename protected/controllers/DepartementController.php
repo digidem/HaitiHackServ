@@ -21,7 +21,7 @@ class DepartementController extends Controller
 		if(isset($_POST['Departement']))
 		{
 			$model->attributes=$_POST['Departement'];
-		
+
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -41,7 +41,7 @@ class DepartementController extends Controller
 		if(isset($_POST['Departement']))
 		{
 			$model->attributes=$_POST['Departement'];
-		
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
