@@ -23,14 +23,13 @@ class Branchsite extends CActiveRecord
 		    //array('street_address', 'geocodeValidator'),
 		);
 	}
-	
+
 	/**
 	 * @param string $attribute the name of the attribute to be validated
 	 * @param array $params options specified in the validation rule
 	 */
-	public function geocodeValidator($attribute,$params) { 
+	public function geocodeValidator($attribute,$params) {
 	   $results = geocodeAddress($attributes);
-	
 	}
 
 	public function relations()
@@ -40,16 +39,16 @@ class Branchsite extends CActiveRecord
 			'organisation0' => array(self::BELONGS_TO, 'Organisation', 'organisation'),
 			'categories' => array(self::MANY_MANY, 'Category', 'branchsite_has_category(branchsite, category)'),
 			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'branchsite'),
-		    'commune0' => array(self::BELONGS_TO, 'Commune', 'commune'),
-		    'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),
+			'commune0' => array(self::BELONGS_TO, 'Commune', 'commune'),
+			'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),
 		);
 	}
 
 	public function behaviors()
 	{
 		return array('CAdvancedArBehavior',
-				array('class' => 'ext.CAdvancedArBehavior')
-				);
+			array('class' => 'ext.CAdvancedArBehavior')
+		);
 	}
 
 	public function attributeLabels()
@@ -68,12 +67,12 @@ class Branchsite extends CActiveRecord
 
 		    'departement' => Yii::t('app', 'Departement'),
 			'quartier' => Yii::t('app', 'Quartier'),
-                        'organisation0.name'=> Yii::t('app','Organisation'),
-                        'quartier0.name'=>Yii::t('app','Quartier'),
+			'organisation0.name'=> Yii::t('app','Organisation'),
+			'quartier0.name'=>Yii::t('app','Quartier'),
 
-		    'commune0.name'=> Yii::t('app','Commune'),
+			'commune0.name'=> Yii::t('app','Commune'),
 
-		    'departement0.name'=> Yii::t('app','Departement'),
+			'departement0.name'=> Yii::t('app','Departement'),
 		);
 	}
 
@@ -103,19 +102,17 @@ class Branchsite extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-        
-        // List all of the organisation
-        
-         public function getOrganisations(){
-            return CHtml::listData(Organisation::model()->findAll(),'id','name');
-                
-        }
-        
-        // return one organisation
-        
-        public function getOrganisation()
-            {
-                $oneOrganisation = $this->getOrganisations();
-                return $oneOrganisation[$this->name];
-            }
+
+	// List all of the organisation
+	public function getOrganisations(){
+		return CHtml::listData(Organisation::model()->findAll(),'id','name');
+	}
+
+	// return one organisation
+	public function getOrganisation()
+	{
+		$oneOrganisation = $this->getOrganisations();
+		return $oneOrganisation[$this->name];
+	}
+
 }
