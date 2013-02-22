@@ -18,18 +18,10 @@
         categoriesUrl: "index.php?r=category",
         resultsUrl: "index.php?r=branchsite",
 
-        extractLocation: function(model) {
-          return [model.get('latitude'), model.get('longitude')];
-        },
+        extractLocation: function(model) { return [model.get('latitude'), model.get('longitude')]; },
 
-        titleRenderer: function(model) {
-          return '<h6>' +
-            model.get('organisation_name') + ' / ' +
-            model.get('quartier_name') + ' / ' +
-            model.get('branch_name') +
-            '</h6>'
-        },
-        detailsRenderer: function(model) { return '<note>' + model.get('street_address') + '</note>'},
+        titleTemplate: '<h6><%= organisation_name %> / <%= quartier_name %> / <%= branch_name %></h6>',
+        detailsTemplate: '<note><%= street_address %></note>'
     };
 
     new HaitiHackMap(options);
