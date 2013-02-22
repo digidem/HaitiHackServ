@@ -101,7 +101,7 @@ class BranchsiteController extends Controller
 		));
 	}
 
-	public function loadModel()
+	private function loadModel()
 	{
 		if($this->_model===null)
 		{
