@@ -84,10 +84,49 @@ class BranchsiteController extends Controller
 
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Branchsite');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if ((isset($_GET["format"]) && $_GET["format"] == "json") || Yii::app()->request->isAjaxRequest)
+		{
+			$this->JSONIndex();
+		}
+		else
+		{
+			$dataProvider=new CActiveDataProvider('Branchsite');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
+		}
+	}
+
+	private function JSONIndex()
+	{
+		header('Content-type: application/json');
+		$models = Branchsite::model()->findAll($this->criteriaForJSONIndex());
+		$ret = $this->createDataForJSONIndex($models);
+		echo CJSON::encode($ret);
+		Yii::app()->end();
+	}
+
+	private function criteriaForJSONIndex()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->with = array("organisation0", "quartier0", "commune0", "categories");
+		$criteria->addCondition("t.longitude is not NULL and t.latitude is not NULL");
+		$criteria->addCondition("t.longitude <> '' and t.latitude <> ''");
+		return $criteria;
+	}
+
+	private function createDataForJSONIndex($models)
+	{
+		$ret = array();
+		$i = 0;
+
+		foreach($models as $model)
+		{
+			$ret[$i] = $model->flattenRelationalAttributes();
+			$i++;
+		}
+
+		return $ret;
 	}
 
 	public function actionAdmin()

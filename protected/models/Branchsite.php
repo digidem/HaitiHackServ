@@ -115,4 +115,12 @@ class Branchsite extends CActiveRecord
 		return $oneOrganisation[$this->name];
 	}
 
+	public function flattenRelationalAttributes()
+	{
+		$el = $this->attributes;
+		$el['organisation_name'] = $this['organisation0']['name'];
+		$el['quartier_name'] = $this['quartier0']['name'];
+		$el['category_name'] = $this['categories'][0]["category_name"];
+		return $el;
+	}
 }

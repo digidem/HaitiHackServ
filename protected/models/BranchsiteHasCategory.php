@@ -24,6 +24,8 @@ class BranchsiteHasCategory extends CActiveRecord
 	public function relations()
 	{
 		return array(
+			'category' => array(self::BELONGS_TO, 'Category', 'category'),
+			'branchsite' => array(self::BELONGS_TO, 'Branchsite', 'branchsite'),
 		);
 	}
 
