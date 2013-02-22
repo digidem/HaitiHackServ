@@ -1,6 +1,6 @@
 <?php
-    $BASE_URL="http://localhost:8000/";
-    //$BASE_URL="http://digidem.github.com/HaitiHackMap/";
+    //$BASE_URL="http://localhost:8000/";
+    $BASE_URL="http://digidem.github.com/HaitiHackMap/";
     $this->layout = 'simple';
 ?>
 
