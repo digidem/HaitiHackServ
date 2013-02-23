@@ -86,16 +86,16 @@
 	<div class="row">
   </div>
 
-  <label for="Category">Category</label><?php
-      $this->widget('application.components.Relation', array(
-          'model' => $model,
-          'relation' => 'categories',
-          'fields' => 'category_name',
-          'allowEmpty' => false,
-          'style' => 'checkbox',
+  <label for="Category">Category</label>
+  <div>
+    <?php
+        $this->widget('application.components.Relation', array(
+              'model' => $model,
+              'relation' => 'categories',
+              'fields' => 'category_name',
+              'allowEmpty' => false,
+              'style' => 'checkbox',
           )
         ); 
-
-
-
-?>
+    ?>
+  </div>
