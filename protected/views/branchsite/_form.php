@@ -93,6 +93,10 @@
 <?php echo $form->error($model,'hours_of_operations'); ?>
 	</div>
   
+<div class="row buttons">
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save')); ?>
+</div>
+
   <label for="Category">Categories</label>
   <div>
     <?php

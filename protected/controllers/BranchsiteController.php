@@ -12,6 +12,7 @@ class BranchsiteController extends Controller
 		));
 	}
 
+	
 	public function actionCreate()
 	{
 		$model=new Branchsite;
@@ -20,25 +21,15 @@ class BranchsiteController extends Controller
 
 		if(isset($_POST['Branchsite']))
 		{
-			if (!isset($_POST['Branchsite']['latitude']) ||
-				!isset($_POST['Branchsite']['longitude']))
-			{
-				//take address and pass it into geocode function
-				//$results = array();
-				//if geocode returns one and only one results, set lat/lon
-
-				//else if more than one, store results in the Session and forward
-
-				//Yii::app()->session['kofaviv_nominatum_results'] = $results;
-			}
-
+   		    $this->branchsiteGeocoding();
+		    			
 			$model->attributes=$_POST['Branchsite'];
 			if(isset($_POST['Branchsite']['Category']))
 				$model->categories = $_POST['Branchsite']['Category'];
 
-
-			if($model->save())
+			if($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -55,6 +46,7 @@ class BranchsiteController extends Controller
 
 		if(isset($_POST['Branchsite']))
 		{
+     		$this->branchsiteGeocoding();
 			$model->attributes=$_POST['Branchsite'];
 			if(isset($_POST['Branchsite']['Category']))
 				$model->categories = $_POST['Branchsite']['Category'];
@@ -167,6 +159,10 @@ class BranchsiteController extends Controller
 	  $coordinates = array();
 	  try
 	  {
+	    /**
+	     * REMOVING THIS CODE FOR NOW AS NOMINATUM SHOULD BE OUR MAIN SOURCE
+	     * FOR LOOKING UP LAT/LON, WE CAN READD THIS LATER IF WE HAVE TIME TO 
+	     * FIGURE OUT HOW TO CONNECT TO THE DB
 	    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 	    $bdd = new PDO('mysql:host=;dbname=testdrive', 'root', '', $pdo_options);
 	    	
@@ -174,10 +170,11 @@ class BranchsiteController extends Controller
 	            addresse like '%$address%' or nom like '%$address%'");
 	    
 	    $json = array();
-	  
+	    */
 	    //Si l'adresse se trouve dans la base, nous recuperons les coordonnees 
 	    //(Latitude, longitude)...
-	    if($donnees = $req->fetch())
+	    //if($donnees = $req->fetch())
+	    if (FALSE)
 	    {
 	      $json[]=$donnees;
 	      json_encode($json); //Conversion d'un tableau php en objet json
@@ -186,6 +183,8 @@ class BranchsiteController extends Controller
 	  
 	      $coordinates[] = 
 	        array('display_name'=>$address, 'lat'=>$lat, 'lon'=>$lon);
+
+	      $req->closeCursor();
 	    }
 	    //Sinon, nous allons les recuperer sur le net...
 	    else
@@ -208,7 +207,6 @@ class BranchsiteController extends Controller
         	    array('display_name'=>$display_name, 'lat'=>$lat, 'lon'=>$lon);
     	  }
 	    }
-	    $req->closeCursor();
 	    	
 	  }
 	  catch(Exception $e)
@@ -217,5 +215,49 @@ class BranchsiteController extends Controller
 	  }
 	  
 	  return $coordinates;
+	}
+	
+	public function branchsiteGeocoding() {
+	  $lat = (isset($_POST['Branchsite']['latitude'])) ?
+	  $_POST['Branchsite']['latitude'] : 0;
+	   
+	  $lon = (isset($_POST['Branchsite']['longitude'])) ?
+	  $_POST['Branchsite']['longitude'] : 0;
+	   
+	  if (!$lat || !$lon)
+	  {
+	    $quartier =
+	    Quartier::model()->findbyPk($_POST['Branchsite']['quartier']);
+	     
+	    $quartier = ($quartier && $quartier['name']) ?
+	    ", ".$quartier['name'] : "";
+	     
+	    $commune =
+	    Commune::model()->findbyPk($_POST['Branchsite']['commune']);
+	
+	    $commune = ($commune && $commune['name']) ?
+	    ", ".$commune['name'] : "";
+	
+	    $departement = Departement::model()->findbyPk
+	    ($_POST['Branchsite']['departement']);
+	
+	    $departement = ($departement && $departement['name']) ?
+	    ", ".$departement['name'] : "";
+	
+	    $address = $_POST['Branchsite']['street_address']." ".$quartier.
+	    " ".$commune." ".$departement.", Haiti";
+	
+	    $results = BranchsiteController::geocodeAddress($address);
+	    if ($results && count($results) == 1) {
+	      $coordinates = array_pop($results);
+	      $_POST['Branchsite']['longitude'] = $coordinates['lon'];
+	      $_POST['Branchsite']['latitude'] = $coordinates['lat'];
+	    }
+	    else {
+	      //FIXME ADD THIS CODE TO A VALIDATOR METHOD
+	      //else if more than one, store results in the Session and forward
+	      //Yii::app()->session['kofaviv_nominatum_results'] = $results;
+	    }
+	  }
 	}
 }
