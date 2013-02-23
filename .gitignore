@@ -168,3 +168,4 @@ pip-log.txt
 assets/*
 *~
 protected/runtime/application.log
+protected/config/db_connection.php
