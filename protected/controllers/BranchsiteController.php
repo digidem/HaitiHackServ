@@ -58,11 +58,13 @@ class BranchsiteController extends Controller
 			$model->attributes=$_POST['Branchsite'];
 			if(isset($_POST['Branchsite']['Category']))
 				$model->categories = $_POST['Branchsite']['Category'];
+			
+			if(isset($_POST['Branchsite']['Service']))
+			  $model->services = $_POST['Branchsite']['Service'];
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
 		$this->render('update',array(
 			'model'=>$model,
 		));

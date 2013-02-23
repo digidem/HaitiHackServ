@@ -19,24 +19,27 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		//'id',
-                'branch_name',
-                'departement0.name',
-                'commune0.name',
-                'organisation0.name',
-                'quartier0.name',
+        'branch_name',
+        'departement0.name',
+        'commune0.name',
+        'organisation0.name',
+        'quartier0.name',
 		'street_address',
-                'site_phone',
-                'url',
+        'site_phone',
+        'url',
 		'longitude',
 		'latitude',
-		
-		
-		
-		
+        'hours_of_operation'
 		
 	),
 )); ?>
 
+<br /><h2> Services of this organisation branch </h2>
+<ul><?php foreach($model->services as $foreignobj) { 
+
+				printf('<li>%s</li>', CHtml::link($foreignobj->service_name, array('service/view', 'id' => $foreignobj->id)));
+
+				} ?></ul><br />
 
 <br /><h2> Categories of this organisation branch </h2>
 <ul><?php foreach($model->categories as $foreignobj) { 
