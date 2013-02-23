@@ -20,8 +20,8 @@ class Branchsite extends CActiveRecord
 			array('street_address, url, branch_name', 'length', 'max'=>250),
 			array('longitude, latitude, site_phone', 'length', 'max'=>45),
 			array('hours_of_operation', 'safe'),
-			array('id, street_address, longitude, latitude, url, site_phone, 
-			    branch_name, organisation, quartier, hours_of_operation', 
+			array('id, street_address, longitude, latitude, url, site_phone,
+			    branch_name, organisation, quartier, hours_of_operation',
 			    'safe', 'on'=>'search'),
 		    //array('street_address', 'geocodeValidator'),
 		);
@@ -44,9 +44,9 @@ class Branchsite extends CActiveRecord
 			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'branchsite'),
 			'commune0' => array(self::BELONGS_TO, 'Commune', 'commune'),
 			'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),
-            'services' => array(self::MANY_MANY, 'Service', 
-                  'branchsite_has_service(branchsite, service)', 'order'=>'service_name'),		
-	   );
+			'services' => array(self::MANY_MANY, 'Service',
+				'branchsite_has_service(branchsite, service)', 'order'=>'service_name'),
+		);
 	}
 
 	public function behaviors()
@@ -119,10 +119,30 @@ class Branchsite extends CActiveRecord
 
 	public function flattenRelationalAttributes()
 	{
-		$el = $this->attributes;
-		$el['organisation_name'] = $this['organisation0']['name'];
-		$el['quartier_name'] = $this['quartier0']['name'];
-		$el['category_name'] = $this['categories'][0]["category_name"];
-		return $el;
+
+		return array_merge(
+			$this->attributes,
+			array(
+				'categories'           => $this->getCategoryNames(),
+				'category_name'        => $this['categories'][0]["category_name"],
+				'hours_operation'      => '',
+				'organisation_acronym' => $this['organisation0']['acronym'],
+				'organisation_name'    => $this['organisation0']['name'],
+				'quartier_name'        => $this['quartier0']['name'],
+				'services'             => $this->getServiceNames(),
+			)
+		);
+	}
+
+	private function getCategoryNames()
+	{
+		$extractNames = function($category) { return $category['category_name']; };
+		return array_map($extractNames, $this['categories']);
+	}
+
+	private function getServiceNames()
+	{
+		$extractNames = function($service) { return $service['service_name']; };
+		return array_map($extractNames, $this['services']);
 	}
 }
