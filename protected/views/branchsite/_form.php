@@ -86,7 +86,7 @@
 	<div class="row">
   </div>
 
-  <label for="Category">Category</label>
+  <label for="Category">Categories</label>
   <div>
     <?php
         $this->widget('application.components.Relation', array(
@@ -98,4 +98,18 @@
           )
         ); 
     ?>
+  </div>
+
+  
+  <label for="Service">Services</label>
+  <div>
+    <?php
+					$this->widget('application.components.Relation', array(
+							'model' => $model,
+							'relation' => 'services',
+							'fields' => 'service_name',
+							'allowEmpty' => false,
+							'style' => 'checkbox',
+							)
+						); ?>
   </div>

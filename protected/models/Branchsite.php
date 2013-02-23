@@ -41,7 +41,8 @@ class Branchsite extends CActiveRecord
 			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'branchsite'),
 			'commune0' => array(self::BELONGS_TO, 'Commune', 'commune'),
 			'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),
-		);
+            'services' => array(self::MANY_MANY, 'Service', 'branchsite_has_service(branchsite, service)'),		
+	   );
 	}
 
 	public function behaviors()
@@ -62,16 +63,12 @@ class Branchsite extends CActiveRecord
 			'site_phone' => Yii::t('app', 'Site Phone'),
 			'branch_name' => Yii::t('app', 'Branch Name'),
 			'organisation' => Yii::t('app', 'Organisation'),
-
 		    'commune' => Yii::t('app', 'Commune'),
-
 		    'departement' => Yii::t('app', 'Departement'),
 			'quartier' => Yii::t('app', 'Quartier'),
 			'organisation0.name'=> Yii::t('app','Organisation'),
 			'quartier0.name'=>Yii::t('app','Quartier'),
-
 			'commune0.name'=> Yii::t('app','Commune'),
-
 			'departement0.name'=> Yii::t('app','Departement'),
 		);
 	}

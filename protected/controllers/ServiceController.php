@@ -1,6 +1,6 @@
 <?php
 
-class ServicesController extends Controller
+class ServiceController extends Controller
 {
 	public $layout='//layouts/column2';
 	private $_model;
@@ -14,13 +14,13 @@ class ServicesController extends Controller
 
 	public function actionCreate()
 	{
-		$model=new Services;
+		$model=new Service;
 
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Services']))
+		if(isset($_POST['Service']))
 		{
-			$model->attributes=$_POST['Services'];
+			$model->attributes=$_POST['Service'];
 
 
 			if($model->save())
@@ -38,9 +38,9 @@ class ServicesController extends Controller
 
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Services']))
+		if(isset($_POST['Service']))
 		{
-			$model->attributes=$_POST['Services'];
+			$model->attributes=$_POST['Service'];
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -67,7 +67,7 @@ class ServicesController extends Controller
 
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Services');
+		$dataProvider=new CActiveDataProvider('Service');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -75,9 +75,9 @@ class ServicesController extends Controller
 
 	public function actionAdmin()
 	{
-		$model=new Services('search');
-		if(isset($_GET['Services']))
-			$model->attributes=$_GET['Services'];
+		$model=new Service('search');
+		if(isset($_GET['Service']))
+			$model->attributes=$_GET['Service'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -89,7 +89,7 @@ class ServicesController extends Controller
 		if($this->_model===null)
 		{
 			if(isset($_GET['id']))
-				$this->_model=Services::model()->findbyPk($_GET['id']);
+				$this->_model=Service::model()->findbyPk($_GET['id']);
 			if($this->_model===null)
 				throw new CHttpException(404, Yii::t('app', 'The requested page does not exist.'));
 		}

@@ -163,6 +163,8 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	padding-left: 110px;
 }
 
+#Branchsite_Service label,
 #Branchsite_Category label{
 	display: inline;
 }
+

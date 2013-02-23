@@ -1,6 +1,6 @@
 <?php
 
-class Services extends CActiveRecord
+class Service extends CActiveRecord
 {
 	public static function model($className=__CLASS__)
 	{
@@ -9,7 +9,7 @@ class Services extends CActiveRecord
 
 	public function tableName()
 	{
-		return 'services';
+		return 'service';
 	}
 
 	public function rules()
@@ -25,7 +25,8 @@ class Services extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'services'),
+			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'service'),
+		    'branchsites' => array(self::MANY_MANY, 'Branchsite', 'branchsite_has_category(service, branchsite)'),
 		);
 	}
 
