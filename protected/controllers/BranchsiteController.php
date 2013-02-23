@@ -164,31 +164,58 @@ class BranchsiteController extends Controller
 	}
 
 	protected function geocodeAddress($address) {
-		$address = urlencode($address);
-
-		$format = "json";
-
-		$url = "http://nominatim.openstreetmap.org/search?q=".$address.
-			"&format=".$format;
-
-		$json = file_get_contents($url);
-
-		$results = json_decode($json);
-
-		$result_count = count($results);
-
-		$coordinates = array();
-		foreach($results as $i=>$result) {
-			$lat = $result->lat;
-			$lon = $result->lon;
-			$display_name = $result->display_name;
-
-			$coordinates[] = array(
-				"lat"=>$lat,
-				"lon"=>$lon,
-				"display_name"=>$display_name);
-		}
-
-		return $coordinates;
+	  $coordinates = array();
+	  try
+	  {
+	    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+	    $bdd = new PDO('mysql:host=;dbname=testdrive', 'root', '', $pdo_options);
+	    	
+	    $req = $bdd->query("SELECT latitude, longitude FROM infos where 
+	            addresse like '%$address%' or nom like '%$address%'");
+	    
+	    $json = array();
+	  
+	    //Si l'adresse se trouve dans la base, nous recuperons les coordonnees 
+	    //(Latitude, longitude)...
+	    if($donnees = $req->fetch())
+	    {
+	      $json[]=$donnees;
+	      json_encode($json); //Conversion d'un tableau php en objet json
+	      $lat = $json[0][0];
+	      $lon = $json[0][1];
+	  
+	      $coordinates[] = 
+	        array('display_name'=>$address, 'lat'=>$lat, 'lon'=>$lon);
+	    }
+	    //Sinon, nous allons les recuperer sur le net...
+	    else
+	    {
+    	  $address = urlencode($address);
+    	    	
+    	  $format = "json";
+    	  
+    	  $url = "http://nominatim.openstreetmap.org/search?q=".$address.
+    			"&format=".$format;
+    	  
+  	  	  $json = file_get_contents($url);
+  	      $results = json_decode($json);
+    	  $result_count = count($results);
+    	  foreach($results as $i=>$result) {
+    	    $lat = $result->lat;
+    	    $lon = $result->lon;
+    	    $display_name = $result->display_name;
+    	    $coordinates[] =
+        	    array('display_name'=>$display_name, 'lat'=>$lat, 'lon'=>$lon);
+    	  }
+	    }
+	    $req->closeCursor();
+	    	
+	  }
+	  catch(Exception $e)
+	  {
+	  die('Erreur : '.$e->getMessage());
+	  }
+	  
+	  return $coordinates;
 	}
 }
