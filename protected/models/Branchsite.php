@@ -16,7 +16,7 @@ class Branchsite extends CActiveRecord
 	{
 		return array(
 			array('street_address, branch_name, organisation, quartier', 'required'),
-			array('organisation, quartier', 'numerical', 'integerOnly'=>true),
+			array('organisation, quartier, commune, departement', 'numerical', 'integerOnly'=>true),
 			array('street_address, url, branch_name', 'length', 'max'=>250),
 			array('longitude, latitude, site_phone', 'length', 'max'=>45),
 			array('hours_of_operation', 'safe'),

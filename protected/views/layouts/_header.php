@@ -19,7 +19,6 @@
             array('label'=>'Contact', 'url'=>array('contact/index')),
             array('label'=>'Category','url'=>array('category/index')),
             array('label'=>'Services','url'=>array('services/index')),
-            array('label'=>'service price','url'=>array('sitePrice/index')),
         ),
         'visible'=>!Yii::app()->user->isGuest),
         array('label'=>'Geographic area', 'url'=>array('#'),

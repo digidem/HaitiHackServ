@@ -48,9 +48,4 @@ $this->menu=array(
 
 				} ?></ul><br />
                                 
- <h2> Price of service at this organisation branch: </h2>
-<ul><?php foreach($model->sitePrices as $foreignobj) { 
-
-				printf('<li><strong>%s</strong> for a price of : %s</li>',CHtml::encode($foreignobj->services0['service_name']), CHtml::link($foreignobj->prix_service, array('siteprice/view', 'id' => $foreignobj->id)));
-
-				} ?></ul>
+ 
