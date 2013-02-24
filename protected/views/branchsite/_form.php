@@ -11,13 +11,17 @@
 </div>
 
 <label for="Organisation">Organisation</label>
-<?php $this->widget('application.components.Relation', array(
-	'model' => $model,
-	'relation' => 'organisation0',
-	'fields' => 'name',
-	'allowEmpty' => false,
-	'style' => 'dropdownlist',
-)); ?>
+<?php
+	$parentCriteria = new CDbCriteria(array('order'=>'name'));
+	$this->widget('application.components.Relation', array(
+		'model' => $model,
+		'relation' => 'organisation0',
+		'fields' => 'name',
+		'allowEmpty' => false,
+		'style' => 'dropdownlist',
+		'parentObjects' => Organisation::model()->findAll($parentCriteria),
+	));
+?>
 
 <label for="Departement">Departement</label>
 <?php $this->widget('application.components.Relation', array(
@@ -26,6 +30,7 @@
 	'fields' => 'name',
 	'allowEmpty' => false,
 	'style' => 'dropdownlist',
+	'parentObjects' => Departement::model()->findAll($parentCriteria),
 )); ?>
 
 <label for="Commune">Commune</label>
@@ -35,6 +40,7 @@
 	'fields' => 'name',
 	'allowEmpty' => true,
 	'style' => 'dropdownlist',
+	'parentObjects' => Commune::model()->findAll($parentCriteria),
 )); ?>
 
 <label for="Quartier">Quartier</label>
@@ -44,6 +50,7 @@
 	'fields' => 'name',
 	'allowEmpty' => true,
 	'style' => 'dropdownlist',
+	'parentObjects' => Quartier::model()->findAll($parentCriteria),
 )); ?>
 
 <div class="row">
