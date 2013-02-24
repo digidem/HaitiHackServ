@@ -108,6 +108,7 @@
               'allowEmpty' => false,
               'style' => 'checkbox',
               'parentObjects' => Category::model()->findAll($parentCriteria),
+              'showAddButton' => false,
           )
         ); 
     ?>
@@ -125,6 +126,7 @@
 				'allowEmpty' => false,
 				'style' => 'checkbox',
 				'parentObjects' => Service::model()->findAll($parentCriteria),
+				'showAddButton' => false,
                ));
 
 				
