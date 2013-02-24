@@ -74,7 +74,8 @@ class CategoryController extends Controller
 		if (Yii::app()->request->isAjaxRequest)
 		{
 			header('Content-type: application/json');
-			$models = Category::model()->findAll();
+			$criteria = new CDbCriteria(array('order'=>'category_name'));
+			$models = Category::model()->findAll($criteria);
 			echo CJSON::encode($models);
 			Yii::app()->end();
 		}
