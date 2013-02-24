@@ -11,10 +11,5 @@
   <?php echo $this->renderPartial('//layouts/_header') ?>
 
   <?php echo $content; ?>
-
-  <div id="footer">
-    Copyright &copy; <?php echo date('Y'); ?> KOFAVIV<br/>
-    All Rights Reserved.<br/>
-  </div>
 </body>
 </html>
