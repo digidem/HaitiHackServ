@@ -119,17 +119,18 @@ class Branchsite extends CActiveRecord
 
 	public function flattenRelationalAttributes()
 	{
+		$categoryNames = $this->getCategoryNames();
+		$serviceNames = $this->getServiceNames();
 
 		return array_merge(
 			$this->attributes,
 			array(
-				'categories'           => $this->getCategoryNames(),
+				'category_names'       => implode($categoryNames, ", "),
 				'category_name'        => $this['categories'][0]["category_name"],
-				'hours_operation'      => '',
 				'organisation_acronym' => $this['organisation0']['acronym'],
 				'organisation_name'    => $this['organisation0']['name'],
 				'quartier_name'        => $this['quartier0']['name'],
-				'services'             => $this->getServiceNames(),
+				'service_names'        => implode($serviceNames, ", "),
 			)
 		);
 	}
