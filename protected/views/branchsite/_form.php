@@ -100,12 +100,14 @@
   <label for="Category">Categories</label>
   <div>
     <?php
+        $parentCriteria = new CDbCriteria(array('order'=>'category_name'));
         $this->widget('application.components.Relation', array(
               'model' => $model,
               'relation' => 'categories',
               'fields' => 'category_name',
               'allowEmpty' => false,
               'style' => 'checkbox',
+              'parentObjects' => Category::model()->findAll($parentCriteria),
           )
         ); 
     ?>
@@ -115,13 +117,14 @@
   <label for="Service">Services</label>
   <div>
     <?php
-        //$criteria = new CDbCriteria(array('order'=>'service_name'));        
+        $parentCriteria = new CDbCriteria(array('order'=>'service_name'));
 		$this->widget('application.components.Relation', array(
 				'model' => $model,
 				'relation' => 'services',
 				'fields' => 'service_name',
 				'allowEmpty' => false,
 				'style' => 'checkbox',
+				'parentObjects' => Service::model()->findAll($parentCriteria),
                ));
 
 				
