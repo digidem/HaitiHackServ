@@ -51,7 +51,7 @@
 
 		extractLocation: function(model) { return [model.get('latitude'), model.get('longitude')]; },
 
-		popupContentsTemplate: $('script#popupTemplate').text();
+		popupContentsTemplate: $('script#popupTemplate').text()
 	};
 
 	new HaitiHackMap(options);
