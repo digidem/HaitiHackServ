@@ -8,7 +8,7 @@ options =
   resultsUrl: "index.php?r=branchsite"
 
   extractLocation: (model) ->
-    location =  [model.get('latitude'), model.get('longitude')]
+    location = [model.get('latitude'), model.get('longitude')]
 
   popupContentsTemplate: $('script#template_popup').text()
 
