@@ -1,19 +1,32 @@
-window.requireTemplate = (templateName) ->
-  template = $ "#template_#{templateName}"
+class TemplateUtil
+  constructor: (templateName) ->
+    @templateName = templateName
+    @requireTemplate()
 
-  if template.length == 0
-    tmplDir = './templates'
-    tmplUrl = "#{assetsUrl}/#{tmplDir}/#{templateName}.tmpl"
-    tmplString = ''
+  requireTemplate: =>
+    if $("##{@id()}").length == 0
+      @grabTemplate()
 
+  grabTemplate: =>
     $.ajax
-      url: tmplUrl,
-      method: 'GET',
-      async: false,
-      contentType: 'text',
-      success: (data) ->
-        tmplString = data
+      url: "#{assetsUrl}/templates/#{@templateName}.tmpl"
+      method: 'GET'
+      async: false
+      contentType: 'text'
+      success: (template) =>
+        @includeTemplate template
 
-    if tmplString.length > 0
-      $('head').append \
-        "<script id='template_#{templateName}' type='text/template'>#{tmplString}</script>"
+  includeTemplate: (template) ->
+    if template.length > 0
+      type = "text/template"
+      scriptTag = "<script id='#{@id()}' type='#{type}'>#{template}</script>"
+
+      $('head').append scriptTag
+
+  id: =>
+    "template_#{@templateName}"
+
+  @requireTemplate: (templateName) ->
+    new TemplateUtil(templateName)
+
+window.requireTemplate = TemplateUtil.requireTemplate
