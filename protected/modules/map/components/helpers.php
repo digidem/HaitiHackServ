@@ -9,37 +9,31 @@ class Helper
 		$this->assetsUrl = $assetsUrl;
 	}
 
-	public function javascripts($files)
+	public function assets($files)
 	{
 		foreach ($files as $file)
 		{
-			if (!stristr($file, 'http'))
-				$file = "$this->assetsUrl/javascripts/$file";
+			if (stristr($file, '.js'))
+			{
+				if (!stristr($file, 'http'))
+					$file = "$this->assetsUrl/javascripts/$file";
 
-			$this->javascriptTag($file);
+				$this->scriptTag("text/javascript", $file);
+			}
+			elseif (stristr($file, '.coffee'))
+			{
+				$this->scriptTag("text/coffeescript", "$this->assetsUrl/javascripts/$file");
+			}
+			elseif (stristr($file, '.css'))
+			{
+				$this->stylesheetTag("$this->assetsUrl/css/$file");
+			}
 		}
 	}
 
-	public function coffeescripts($files)
+	public function scriptTag($type, $src)
 	{
-		foreach ($files as $file)
-			$this->coffeescriptTag("$this->assetsUrl/javascripts/$file");
-	}
-
-	public function stylesheets($files)
-	{
-		foreach ($files as $file)
-			$this->stylesheetTag("$this->assetsUrl/css/$file");
-	}
-
-	public function javascriptTag($src)
-	{
-		print "<script src='$src'></script>";
-	}
-
-	public function coffeescriptTag($src)
-	{
-		print "<script type='text/coffeescript' src='$src'></script>";
+		print "<script type='$type' src='$src'></script>";
 	}
 
 	public function stylesheetTag($href)

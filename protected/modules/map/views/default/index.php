@@ -8,6 +8,11 @@
 
 	$helper = new Helper($assetsUrl);
 	$helper->exportVarsToJS(array("assetsUrl" => $assetsUrl, "appUrl" => $appUrl,));
-	$helper->stylesheets(array("index.css"));
-	$helper->javascripts(array("vendor/coffee-script.js", "$appUrl/scripts/haiti_hack_map.js"));
-	$helper->coffeescripts(array("require_template.coffee", "index.coffee"));
+
+	$helper->assets(array(
+		"index.css",
+		"vendor/coffee-script.js",
+		"$appUrl/scripts/haiti_hack_map.js",
+		"require_template.coffee",
+		"index.coffee",
+	));
