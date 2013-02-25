@@ -32,7 +32,9 @@ class MapModule extends CWebModule
 	{
 		if ($this->_assetsUrl === null)
 			$this->_assetsUrl = Yii::app()->getAssetManager()->publish(
-				Yii::getPathOfAlias('map.assets') );
+				Yii::getPathOfAlias('map.assets')
+			);
+
 		return $this->_assetsUrl;
 	}
 
