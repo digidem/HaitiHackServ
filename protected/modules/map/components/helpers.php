@@ -12,22 +12,48 @@ class Helper
 	public function javascripts($files)
 	{
 		foreach ($files as $file)
-			$this->script_tag("$this->assetsUrl/javascripts/$file");
+		{
+			if (!stristr($file, 'http'))
+				$file = "$this->assetsUrl/javascripts/$file";
+
+			$this->javascriptTag($file);
+		}
+	}
+
+	public function coffeescripts($files)
+	{
+		foreach ($files as $file)
+			$this->coffeescriptTag("$this->assetsUrl/javascripts/$file");
 	}
 
 	public function stylesheets($files)
 	{
 		foreach ($files as $file)
-			$this->stylesheet_tag("$this->assetsUrl/css/$file");
+			$this->stylesheetTag("$this->assetsUrl/css/$file");
 	}
 
-	public function script_tag($src)
+	public function javascriptTag($src)
 	{
 		print "<script src='$src'></script>";
 	}
 
-	public function stylesheet_tag($href)
+	public function coffeescriptTag($src)
+	{
+		print "<script type='text/coffeescript' src='$src'></script>";
+	}
+
+	public function stylesheetTag($href)
 	{
 		print "<link rel='stylesheet' href='$href'>";
+	}
+
+	public function exportVarsToJS($vars)
+	{
+		echo "<script>";
+		foreach ($vars as $name => $value)
+		{
+			echo "$name = '$value';";
+		}
+		echo "</script>";
 	}
 }
