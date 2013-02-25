@@ -12,6 +12,9 @@ class MapModule extends CWebModule
 			'map.models.*',
 			'map.components.*',
 		));
+
+		// This module needs jQuery
+		Yii::app()->clientScript->registerCoreScript('jquery');
 	}
 
 	public function beforeControllerAction($controller, $action)
