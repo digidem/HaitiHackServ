@@ -5,6 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="language" content="en" />
+  <meta name="viewport" content="width=device-width">
   <?php echo $this->renderPartial('//layouts/_stylesheets'); ?>
 </head>
 <body>
