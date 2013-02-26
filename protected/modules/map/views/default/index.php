@@ -2,8 +2,8 @@
 	$this->layout = 'simple';
 	require_once(dirname(__FILE__) . '/../../components/helpers.php');
 
-	$appUrl = "http://localhost:8000";
-	//$appUrl = "http://digidem.github.com/HaitiHackMap";
+	//$appUrl = "http://localhost:8000";
+	$appUrl = "http://digidem.github.com/HaitiHackMap";
 	$assetsUrl = $this->module->assetsUrl;
 
 	$helper = new Helper($assetsUrl);
