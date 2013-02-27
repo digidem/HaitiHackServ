@@ -58,11 +58,12 @@ div.form label
 	font-weight: bold;
 	font-size: 0.9em;
 	display: block;
+	margin-bottom: 8px;
 }
 
 div.form .row
 {
-	margin: 5px 0;
+	margin: 5px 0 15px;
 }
 
 div.form .hint
