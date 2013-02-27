@@ -1,3 +1,6 @@
+<?php $this->widget('ext.EChosen.EChosen'); ?>
+<script>$(function() { $("select").chosen(); })</script>
+
 <p class="note">Fields with <span class="required">*</span> are required.</p>
 
 <?php echo $form->errorSummary($model); ?>
@@ -94,39 +97,34 @@
 	<?php echo $form->error($model,'hours_of_operations'); ?>
 </div>
 
-<div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Save')); ?>
+<div class="row">
+  <label for="Category">Categories</label>
+  <?php
+    $parentCriteria = new CDbCriteria(array('order'=>'category_name'));
+    $this->widget('application.components.Relation', array(
+      'model' => $model,
+      'relation' => 'categories',
+      'fields' => 'category_name',
+      'allowEmpty' => false,
+      'style' => 'multiplelist',
+      'parentObjects' => Category::model()->findAll($parentCriteria),
+      'showAddButton' => false,
+    ));
+  ?>
 </div>
 
-<label for="Category">Categories</label>
-<div>
-	<?php
-		$parentCriteria = new CDbCriteria(array('order'=>'category_name'));
-		$this->widget('application.components.Relation', array(
-			'model' => $model,
-			'relation' => 'categories',
-			'fields' => 'category_name',
-			'allowEmpty' => false,
-			'style' => 'checkbox',
-			'parentObjects' => Category::model()->findAll($parentCriteria),
-			'showAddButton' => false,
-		));
-	?>
-</div>
-
-
-<label for="Service">Services</label>
-<div>
-	<?php
-		$parentCriteria = new CDbCriteria(array('order'=>'service_name'));
-		$this->widget('application.components.Relation', array(
-			'model' => $model,
-			'relation' => 'services',
-			'fields' => 'service_name',
-			'allowEmpty' => false,
-			'style' => 'checkbox',
-			'parentObjects' => Service::model()->findAll($parentCriteria),
-			'showAddButton' => false,
-		));
-	?>
+<div class="row">
+  <label for="Service">Services</label>
+  <?php
+    $parentCriteria = new CDbCriteria(array('order'=>'service_name'));
+    $this->widget('application.components.Relation', array(
+      'model' => $model,
+      'relation' => 'services',
+      'fields' => 'service_name',
+      'allowEmpty' => false,
+      'style' => 'multiplelist',
+      'parentObjects' => Service::model()->findAll($parentCriteria),
+      'showAddButton' => false,
+    ));
+  ?>
 </div>
