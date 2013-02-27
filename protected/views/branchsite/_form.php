@@ -13,48 +13,56 @@
 	<?php echo $form->error($model,'branch_name'); ?>
 </div>
 
-<label for="Organisation">Organisation</label>
-<?php
-	$parentCriteria = new CDbCriteria(array('order'=>'name'));
-	$this->widget('application.components.Relation', array(
-		'model' => $model,
-		'relation' => 'organisation0',
-		'fields' => 'name',
-		'allowEmpty' => false,
-		'style' => 'dropdownlist',
-		'parentObjects' => Organisation::model()->findAll($parentCriteria),
-	));
-?>
+<div class="row">
+  <label for="Organisation">Organisation</label>
+  <?php
+    $parentCriteria = new CDbCriteria(array('order'=>'name'));
+    $this->widget('application.components.Relation', array(
+      'model' => $model,
+      'relation' => 'organisation0',
+      'fields' => 'name',
+      'allowEmpty' => false,
+      'style' => 'dropdownlist',
+      'parentObjects' => Organisation::model()->findAll($parentCriteria),
+    ));
+  ?>
+</div>
 
-<label for="Departement">Departement</label>
-<?php $this->widget('application.components.Relation', array(
-	'model' => $model,
-	'relation' => 'departement0',
-	'fields' => 'name',
-	'allowEmpty' => false,
-	'style' => 'dropdownlist',
-	'parentObjects' => Departement::model()->findAll($parentCriteria),
-)); ?>
+<div class="row">
+  <label for="Departement">Departement</label>
+  <?php $this->widget('application.components.Relation', array(
+    'model' => $model,
+    'relation' => 'departement0',
+    'fields' => 'name',
+    'allowEmpty' => false,
+    'style' => 'dropdownlist',
+    'parentObjects' => Departement::model()->findAll($parentCriteria),
+  )); ?>
+</div>
 
-<label for="Commune">Commune</label>
-<?php $this->widget('application.components.Relation', array(
-	'model' => $model,
-	'relation' => 'commune0',
-	'fields' => 'name',
-	'allowEmpty' => true,
-	'style' => 'dropdownlist',
-	'parentObjects' => Commune::model()->findAll($parentCriteria),
-)); ?>
+<div class="row">
+  <label for="Commune">Commune</label>
+  <?php $this->widget('application.components.Relation', array(
+    'model' => $model,
+    'relation' => 'commune0',
+    'fields' => 'name',
+    'allowEmpty' => true,
+    'style' => 'dropdownlist',
+    'parentObjects' => Commune::model()->findAll($parentCriteria),
+  )); ?>
+</div>
 
-<label for="Quartier">Quartier</label>
-<?php $this->widget('application.components.Relation', array(
-	'model' => $model,
-	'relation' => 'quartier0',
-	'fields' => 'name',
-	'allowEmpty' => true,
-	'style' => 'dropdownlist',
-	'parentObjects' => Quartier::model()->findAll($parentCriteria),
-)); ?>
+<div class="row">
+  <label for="Quartier">Quartier</label>
+  <?php $this->widget('application.components.Relation', array(
+    'model' => $model,
+    'relation' => 'quartier0',
+    'fields' => 'name',
+    'allowEmpty' => true,
+    'style' => 'dropdownlist',
+    'parentObjects' => Quartier::model()->findAll($parentCriteria),
+  )); ?>
+</div>
 
 <div class="row">
 	<?php echo $form->labelEx($model,'street_address'); ?>
@@ -65,6 +73,7 @@
 </div>
 
 <div class="row">
+  <label for="longitude">Coordinates</label>
 	Lat: <?php echo $form->textField(
 		$model, 'longitude', array('size'=>20, 'maxlength' => 45)
 	); ?>
