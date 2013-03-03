@@ -8,9 +8,12 @@
 
 <div class="row">
 	<?php echo $form->labelEx($model,'branch_name'); ?>
-	<?php echo $form->textField(
-		$model,'branch_name',array('size'=>60,'maxlength'=>250)
-	); ?>
+	<?php echo $form->textField($model, 'branch_name',
+		array(
+			'size'=>60,
+			'maxlength'=>250,
+			'placeholder' => 'Branch Name'
+	)); ?>
 	<?php echo $form->error($model,'branch_name'); ?>
 </div>
 
@@ -89,15 +92,15 @@
 
 <div class="row">
 	<?php echo $form->labelEx($model,'site_phone'); ?>
-	<?php echo $form->textField(
-		$model, 'site_phone', array('size'=>45, 'maxlength'=>45)
-	); ?>
+	<input type="tel" value="<?php $model->site_phone ?>" size="45" maxlength="45"
+		placeholder="Phone Number" name="Branchsite[site_phone]" id="Branchsite_site_phone">
 	<?php echo $form->error($model,'site_phone'); ?>
 </div>
 
 <div class="row">
-	<?php echo $form->labelEx($model,'url'); ?>
-	<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>250)); ?>
+	<?php echo $form->labelEx($model, 'url'); ?>
+	<input type="url" value="<?php $model->url ?>" size="60" maxlength="60"
+		placeholder="URL" name="Branchsite[url]" id="Branchsite_url">
 	<?php echo $form->error($model,'url'); ?>
 </div>
 
@@ -108,33 +111,33 @@
 </div>
 
 <div class="row">
-  <label for="Category">Categories</label>
-  <?php
-    $parentCriteria = new CDbCriteria(array('order'=>'category_name'));
-    $this->widget('application.components.Relation', array(
-      'model' => $model,
-      'relation' => 'categories',
-      'fields' => 'category_name',
-      'allowEmpty' => false,
-      'style' => 'multiplelist',
-      'parentObjects' => Category::model()->findAll($parentCriteria),
-      'showAddButton' => false,
-    ));
-  ?>
+	<label for="Category">Categories</label>
+	<?php
+		$parentCriteria = new CDbCriteria(array('order'=>'category_name'));
+		$this->widget('application.components.Relation', array(
+			'model' => $model,
+			'relation' => 'categories',
+			'fields' => 'category_name',
+			'allowEmpty' => false,
+			'style' => 'multiplelist',
+			'parentObjects' => Category::model()->findAll($parentCriteria),
+			'showAddButton' => false,
+		));
+	?>
 </div>
 
 <div class="row">
-  <label for="Service">Services</label>
-  <?php
-    $parentCriteria = new CDbCriteria(array('order'=>'service_name'));
-    $this->widget('application.components.Relation', array(
-      'model' => $model,
-      'relation' => 'services',
-      'fields' => 'service_name',
-      'allowEmpty' => false,
-      'style' => 'multiplelist',
-      'parentObjects' => Service::model()->findAll($parentCriteria),
-      'showAddButton' => false,
-    ));
-  ?>
+	<label for="Service">Services</label>
+	<?php
+		$parentCriteria = new CDbCriteria(array('order'=>'service_name'));
+		$this->widget('application.components.Relation', array(
+			'model' => $model,
+			'relation' => 'services',
+			'fields' => 'service_name',
+			'allowEmpty' => false,
+			'style' => 'multiplelist',
+			'parentObjects' => Service::model()->findAll($parentCriteria),
+			'showAddButton' => false,
+		));
+	?>
 </div>
