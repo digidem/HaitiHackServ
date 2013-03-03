@@ -1,5 +1,6 @@
-<?php $this->widget('ext.EChosen.EChosen'); ?>
-<script>$(function() { $("select").chosen(); })</script>
+<?php $this->widget('ext.YiiSelect2.YiiSelect2', array(
+	'target' => 'select',
+)); ?>
 
 <p class="note">Fields with <span class="required">*</span> are required.</p>
 

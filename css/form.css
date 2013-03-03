@@ -164,25 +164,8 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	padding-left: 110px;
 }
 
-#Branchsite_Service_chzn,
-#Branchsite_Category_chzn {
-  width: 500px !important;
-}
-
-#Branchsite_Category_chzn .chzn-drop {
-  width: 150px !important;
-}
-
-#Organisation_chzm .chzn-drop {
-  width: 350px !important;
-}
-
-#Branchsite_Service_chzn .chzn-drop {
-  width: 350px !important;
-}
-
-#Branchsite_Category_chzn .default {
-  width: 200px !important;
+.select2-container {
+	width: 100%;
 }
 
 #Branchsite_hours_of_operation {
