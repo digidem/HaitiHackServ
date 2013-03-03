@@ -1,0 +1,3 @@
+[submodule "protected/extensions/YiiSelect2"]
+	path = protected/extensions/YiiSelect2
+	url = git@github.com:jcmuller/yii-select2.git
