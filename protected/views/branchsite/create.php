@@ -16,11 +16,11 @@ $this->menu=array(
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'branchsite-form',
 	'enableAjaxValidation'=>true,
-)); 
+));
 echo $this->renderPartial('_form', array(
 	'model'=>$model,
 	'form' =>$form
-	)); ?>
+)); ?>
 
 <div class="row buttons">
 	<?php echo CHtml::submitButton(Yii::t('app', 'Create')); ?>
