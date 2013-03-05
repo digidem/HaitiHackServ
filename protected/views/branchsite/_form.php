@@ -92,15 +92,21 @@
 
 <div class="row">
 	<?php echo $form->labelEx($model,'site_phone'); ?>
-	<input type="tel" value="<?php $model->site_phone ?>" size="45" maxlength="45"
-		placeholder="Phone Number" name="Branchsite[site_phone]" id="Branchsite_site_phone">
-	<?php echo $form->error($model,'site_phone'); ?>
+	<?php echo $form->textField($model, 'site_phone', array(
+		'placeholder' => 'Phone Number',
+		'size' => 60,
+		'maxlength' => 200,
+	)); ?>
+	<?php echo $form->error($model, 'site_phone'); ?>
 </div>
 
 <div class="row">
 	<?php echo $form->labelEx($model, 'url'); ?>
-	<input type="url" value="<?php $model->url ?>" size="60" maxlength="60"
-		placeholder="URL" name="Branchsite[url]" id="Branchsite_url">
+	<?php echo $form->urlField($model, 'url', array(
+		'placeholder' => 'URL',
+		'size' => 60,
+	   	'maxlength' => 200,
+	)); ?>
 	<?php echo $form->error($model,'url'); ?>
 </div>
 
