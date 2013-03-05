@@ -19,6 +19,7 @@ class Branchsite extends CActiveRecord
 			array('organisation, quartier, commune, departement', 'numerical', 'integerOnly'=>true),
 			array('street_address, url, branch_name', 'length', 'max'=>250),
 			array('longitude, latitude, site_phone', 'length', 'max'=>45),
+			array('categories, services', 'safe'),
 			array('hours_of_operation', 'safe'),
 			array('id, street_address, longitude, latitude, url, site_phone,
 			    branch_name, organisation, quartier, hours_of_operation',
@@ -40,7 +41,8 @@ class Branchsite extends CActiveRecord
 		return array(
 			'quartier0' => array(self::BELONGS_TO, 'Quartier', 'quartier'),
 			'organisation0' => array(self::BELONGS_TO, 'Organisation', 'organisation'),
-			'categories' => array(self::MANY_MANY, 'Category', 'branchsite_has_category(branchsite, category)'),
+			'categories' => array(self::MANY_MANY, 'Category',
+				'branchsite_has_category(branchsite, category)', 'order' => 'category_name'),
 			'sitePrices' => array(self::HAS_MANY, 'SitePrice', 'branchsite'),
 			'commune0' => array(self::BELONGS_TO, 'Commune', 'commune'),
 			'departement0' => array(self::BELONGS_TO, 'Departement', 'departement'),

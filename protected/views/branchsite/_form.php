@@ -1,6 +1,4 @@
-<?php $this->widget('ext.YiiSelect2.YiiSelect2', array(
-	'target' => 'select',
-)); ?>
+<?php $this->widget('ext.YiiSelect2.YiiSelect2', array('target' => 'select',)); ?>
 
 <p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -20,14 +18,15 @@
 <div class="row">
   <label for="Organisation">Organisation</label>
   <?php
-    $parentCriteria = new CDbCriteria(array('order'=>'name'));
+    $criteria = new CDbCriteria(array('order'=>'name'));
+
     $this->widget('application.components.Relation', array(
       'model' => $model,
       'relation' => 'organisation0',
       'fields' => 'name',
       'allowEmpty' => false,
       'style' => 'dropdownlist',
-      'parentObjects' => Organisation::model()->findAll($parentCriteria),
+      'parentObjects' => Organisation::model()->findAll($criteria),
     ));
   ?>
 </div>
@@ -40,7 +39,7 @@
     'fields' => 'name',
     'allowEmpty' => false,
     'style' => 'dropdownlist',
-    'parentObjects' => Departement::model()->findAll($parentCriteria),
+    'parentObjects' => Departement::model()->findAll($criteria),
   )); ?>
 </div>
 
@@ -52,7 +51,7 @@
     'fields' => 'name',
     'allowEmpty' => true,
     'style' => 'dropdownlist',
-    'parentObjects' => Commune::model()->findAll($parentCriteria),
+    'parentObjects' => Commune::model()->findAll($criteria),
   )); ?>
 </div>
 
@@ -64,7 +63,7 @@
     'fields' => 'name',
     'allowEmpty' => true,
     'style' => 'dropdownlist',
-    'parentObjects' => Quartier::model()->findAll($parentCriteria),
+    'parentObjects' => Quartier::model()->findAll($criteria),
   )); ?>
 </div>
 
@@ -117,33 +116,27 @@
 </div>
 
 <div class="row">
-	<label for="Branchsite_Category">Categories</label>
+	<?php echo $form->labelEx($model, 'categories'); ?>
 	<?php
-		$parentCriteria = new CDbCriteria(array('order'=>'category_name'));
-		$this->widget('application.components.Relation', array(
-			'model' => $model,
-			'relation' => 'categories',
-			'fields' => 'category_name',
-			'allowEmpty' => false,
-			'style' => 'multiplelist',
-			'parentObjects' => Category::model()->findAll($parentCriteria),
-			'showAddButton' => false,
-		));
+		$criteria = new CDbCriteria(array('order'=>'category_name'));
+
+		echo $form->dropDownList($model, 'categories',
+			CHtml::listData(Category::model()->findAll($criteria), 'id', 'category_name'),
+			array('multiple'=>'multiple')
+		);
 	?>
+	<?php echo $form->error($model, 'categories'); ?>
 </div>
 
 <div class="row">
-	<label for="Branchsite_Service">Services</label>
+	<?php echo $form->labelEx($model, 'services'); ?>
 	<?php
-		$parentCriteria = new CDbCriteria(array('order'=>'service_name'));
-		$this->widget('application.components.Relation', array(
-			'model' => $model,
-			'relation' => 'services',
-			'fields' => 'service_name',
-			'allowEmpty' => false,
-			'style' => 'multiplelist',
-			'parentObjects' => Service::model()->findAll($parentCriteria),
-			'showAddButton' => false,
-		));
+		$criteria = new CDbCriteria(array('order'=>'service_name'));
+
+		echo $form->dropDownList($model, 'services',
+			CHtml::listData(Service::model()->findAll($criteria), 'id', 'service_name'),
+			array('multiple'=>'multiple')
+		);
 	?>
+	<?php echo $form->error($model, 'services'); ?>
 </div>
