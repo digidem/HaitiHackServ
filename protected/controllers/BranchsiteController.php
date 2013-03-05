@@ -47,9 +47,11 @@ class BranchsiteController extends Controller
 
 		$model->attributes = $_POST['Branchsite'];
 
+		// This is a hack to work around the manymany attribute setting
 		if (isset($_POST['Branchsite']['Category']))
 			$model->categories = $_POST['Branchsite']['Category'];
 
+		// This is a hack to work around the manymany attribute setting
 		if (isset($_POST['Branchsite']['Service']))
 			$model->services = $_POST['Branchsite']['Service'];
 
