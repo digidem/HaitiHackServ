@@ -44,7 +44,7 @@ class YiiSelect2 extends CWidget
   {
     // Publish extension assets
     $assets = Yii::app()->getAssetManager()->
-      publish(Yii::getPathOfAlias('ext.YiiSelect2') . '/assets');
+      publish(Yii::getPathOfAlias('ext.yiiselect2') . '/assets');
 
     // Register extension assets
     $cs = Yii::app()->getClientScript();
