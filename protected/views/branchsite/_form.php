@@ -117,7 +117,7 @@
 </div>
 
 <div class="row">
-	<label for="Category">Categories</label>
+	<label for="Branchsite_Category">Categories</label>
 	<?php
 		$parentCriteria = new CDbCriteria(array('order'=>'category_name'));
 		$this->widget('application.components.Relation', array(
@@ -133,7 +133,7 @@
 </div>
 
 <div class="row">
-	<label for="Service">Services</label>
+	<label for="Branchsite_Service">Services</label>
 	<?php
 		$parentCriteria = new CDbCriteria(array('order'=>'service_name'));
 		$this->widget('application.components.Relation', array(
