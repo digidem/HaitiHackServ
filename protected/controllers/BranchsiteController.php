@@ -12,54 +12,49 @@ class BranchsiteController extends Controller
 		));
 	}
 
-	
+
 	public function actionCreate()
 	{
-		$model=new Branchsite;
+		$model = new Branchsite;
 
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Branchsite']))
-		{
-   		    $this->branchsiteGeocoding();
-		    			
-			$model->attributes=$_POST['Branchsite'];
-			if(isset($_POST['Branchsite']['Category']))
-				$model->categories = $_POST['Branchsite']['Category'];
-
-			if($model->save()) {
-				$this->redirect(array('view','id'=>$model->id));
-			}
-		}
+			$this->updateModel($model);
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
-
 	}
 
 	public function actionUpdate()
 	{
-		$model=$this->loadModel();
+		$model = $this->loadModel();
 
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Branchsite']))
-		{
-     		$this->branchsiteGeocoding();
-			$model->attributes=$_POST['Branchsite'];
-			if(isset($_POST['Branchsite']['Category']))
-				$model->categories = $_POST['Branchsite']['Category'];
-			
-			if(isset($_POST['Branchsite']['Service']))
-			  $model->services = $_POST['Branchsite']['Service'];
+			$this->updateModel($model);
 
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	private function updateModel($model)
+	{
+		$this->branchsiteGeocoding();
+
+		$model->attributes = $_POST['Branchsite'];
+
+		if (isset($_POST['Branchsite']['Category']))
+			$model->categories = $_POST['Branchsite']['Category'];
+
+		if (isset($_POST['Branchsite']['Service']))
+			$model->services = $_POST['Branchsite']['Service'];
+
+		if ($model->save())
+			$this->redirect(array('view', 'id' => $model->id));
 	}
 
 	public function actionDelete()
