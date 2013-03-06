@@ -12,13 +12,13 @@ class m130305_103857_new_user_management_profiles extends CDbMigration
 
         ));
         
-        $this->createIndex('profiles_pk', 'profiles', 'id', true);	
+
 	
 	}
 
 	public function down()
 	{
-        $this->dropIndex('profiles_pk');	
+
         $this->dropTable('profiles');
 	}
 

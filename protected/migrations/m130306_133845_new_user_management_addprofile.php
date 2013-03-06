@@ -5,6 +5,7 @@ class m130306_133845_new_user_management_addprofile extends CDbMigration
 	public function up()
 	{
 		$this->insert('profiles', array(
+			'user_id'=>'1'
 			'firstname' => 'Administrator',
 			'lastname' => 'Admin',
 
@@ -14,7 +15,7 @@ class m130306_133845_new_user_management_addprofile extends CDbMigration
 	public function down()
 	{
 		$this->delete(
-			'profiles',"id = '1'"
+			'profiles',"user_id = '1'"
 		);
 	}
 
