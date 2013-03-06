@@ -42,7 +42,8 @@
         'itemOptions'=>array('id'=>'itemAdmin'),
 
         'items'=>array(
-            array('label'=>'Create user','url'=>array('/users/create')),
+            array('label'=>'Users','url'=>array('/user')),
+            array('label'=>'Rights','url'=>array('/rights')),
 
 
         ),
