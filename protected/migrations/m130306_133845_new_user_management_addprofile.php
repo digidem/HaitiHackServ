@@ -17,15 +17,4 @@ class m130306_133845_new_user_management_addprofile extends CDbMigration
 			'profiles',"user_id = '1'"
 		);
 	}
-
-	/*
-	// Use safeUp/safeDown to do migration with transaction
-	public function safeUp()
-	{
-	}
-
-	public function safeDown()
-	{
-	}
-	 */
 }

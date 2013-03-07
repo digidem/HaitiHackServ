@@ -4,12 +4,11 @@ class m130306_133404_new_user_management_addprofilefields extends CDbMigration
 {
 	public function up()
 	{
-		
 		$this->insert('profiles_fields', array(
-            'id' => '1',
-            'required' => '1 ',
-            'position' => '1 ',
-            'visible' => '3',
+			'id' => '1',
+			'required' => '1 ',
+			'position' => '1 ',
+			'visible' => '3',
 			'varname' => 'lastname',
 			'title' => 'Last Name',
 			'field_type' => 'VARCHAR',
@@ -22,13 +21,13 @@ class m130306_133404_new_user_management_addprofilefields extends CDbMigration
 			'widget' => '',
 			'other_validator' => '',
 			'widgetparams' => '',
+		));
 
-        ));
 		$this->insert('profiles_fields', array(
-            'id' => '2',
-            'required' => '1 ',
-            'position' => '1 ',
-            'visible' => '3',
+			'id' => '2',
+			'required' => '1 ',
+			'position' => '1 ',
+			'visible' => '3',
 			'varname' => 'firstname',
 			'title' => 'First Name',
 			'field_type' => 'VARCHAR',
@@ -41,11 +40,9 @@ class m130306_133404_new_user_management_addprofilefields extends CDbMigration
 			'widget' => '',
 			'other_validator' => '',
 			'widgetparams' => '',
+		));
 
-        ));		
-        
-        $this->createIndex('profiles_fields_pk', 'profiles_fields', 'id', true);	
-	
+		$this->createIndex('profiles_fields_pk', 'profiles_fields', 'id', true);
 	}
 
 	public function down()
@@ -55,17 +52,6 @@ class m130306_133404_new_user_management_addprofilefields extends CDbMigration
 		);
 		$this->delete(
 			'profiles_fields',"id = '2'"
-		);		
+		);
 	}
-
-	/*
-	// Use safeUp/safeDown to do migration with transaction
-	public function safeUp()
-	{
-	}
-
-	public function safeDown()
-	{
-	}
-	*/
 }
