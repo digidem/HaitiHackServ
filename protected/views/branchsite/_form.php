@@ -1,4 +1,22 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/osm_results.css" />
+<?php
+$assets = Yii::app()->getAssetManager()->publish('protected/javascripts');
+Yii::app()->clientScript->registerScriptFile(
+    $assets . '/search_listener.js',
+    CClientScript::POS_END
+);
+
+Yii::app()->clientScript->registerScript(
+    'search_listener',
+<<<EOF
+      new SearchListener($('[data-address-search="base"]'));
+EOF
+, CClientScript::POS_END
+);
+?>
+
 <?php $this->widget('ext.yiiselect2.YiiSelect2', array('target' => 'select',)); ?>
+
 
 <p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -31,63 +49,95 @@
   ?>
 </div>
 
-<div class="row">
-  <label for="Departement">Departement</label>
-  <?php $this->widget('application.components.Relation', array(
-    'model' => $model,
-    'relation' => 'departement0',
-    'fields' => 'name',
-    'allowEmpty' => false,
-    'style' => 'dropdownlist',
-    'parentObjects' => Departement::model()->findAll($criteria),
-  )); ?>
-</div>
+<span data-address-search="base">
+	<div class="row">
+	  <label for="Departement">Departement</label>
+	  <?php $this->widget('application.components.Relation', array(
+		'model' => $model,
+		'relation' => 'departement0',
+		'fields' => 'name',
+		'allowEmpty' => false,
+		'style' => 'dropdownlist',
+		'parentObjects' => Departement::model()->findAll($criteria),
+		'htmlOptions' => array("data-address-search" => "source"),
+	  )); ?>
+	</div>
 
-<div class="row">
-  <label for="Commune">Commune</label>
-  <?php $this->widget('application.components.Relation', array(
-    'model' => $model,
-    'relation' => 'commune0',
-    'fields' => 'name',
-    'allowEmpty' => true,
-    'style' => 'dropdownlist',
-    'parentObjects' => Commune::model()->findAll($criteria),
-  )); ?>
-</div>
+	<div class="row">
+	  <label for="Commune">Commune</label>
+	  <?php $this->widget('application.components.Relation', array(
+		'model' => $model,
+		'relation' => 'commune0',
+		'fields' => 'name',
+		'allowEmpty' => true,
+		'style' => 'dropdownlist',
+		'parentObjects' => Commune::model()->findAll($criteria),
+		'htmlOptions' => array("data-address-search" => "source"),
+	  )); ?>
+	</div>
 
-<div class="row">
-  <label for="Quartier">Quartier</label>
-  <?php $this->widget('application.components.Relation', array(
-    'model' => $model,
-    'relation' => 'quartier0',
-    'fields' => 'name',
-    'allowEmpty' => true,
-    'style' => 'dropdownlist',
-    'parentObjects' => Quartier::model()->findAll($criteria),
-  )); ?>
-</div>
+	<div class="row">
+	  <label for="Quartier">Quartier</label>
+	  <?php $this->widget('application.components.Relation', array(
+		'model' => $model,
+		'relation' => 'quartier0',
+		'fields' => 'name',
+		'allowEmpty' => true,
+		'style' => 'dropdownlist',
+		'parentObjects' => Quartier::model()->findAll($criteria),
+		'htmlOptions' => array("data-address-search" => "source"),
+	  )); ?>
+	</div>
 
-<div class="row">
-	<?php echo $form->labelEx($model,'street_address'); ?>
-	<?php echo $form->textField(
-		$model,'street_address', array('size'=>60,'maxlength'=>250)
-	); ?>
-	<?php echo $form->error($model,'street_address'); ?>
-</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'street_address'); ?>
+		<?php echo $form->textField(
+			$model,
+			'street_address',
+			array(
+				'size' => 60,
+				'maxlength' => 250,
+				"data-address-search" => "search",
+			)
+		); ?>
+		<?php echo $form->error($model,'street_address'); ?>
+		<input type="button" data-address-search='trigger' value="Search" />
+	</div>
 
-<div class="row">
-  <label for="longitude">Coordinates</label>
-	Lat: <?php echo $form->textField(
-		$model, 'longitude', array('size'=>20, 'maxlength' => 45)
-	); ?>
+	<div>
+		<input type="text" name="addressFound" placeholder="This is the full location found in the geolocation service" size="100">
+	</div>
 
-	Lon: <?php echo $form->textField(
-		$model, 'latitude', array('size'=>20, 'maxlength' => 45)
-	); ?>
+	<div>
+		<input type="hidden" name="builtAddress" placeholder="Fill me out!" size="100">
+	</div>
 
-    <?php echo $form->error($model, 'longitude'); ?>
-    <?php echo $form->error($model, 'latitude'); ?>
-</div>
+	<div class="row">
+	  <label for="longitude">Coordinates</label>
+		Lat: <?php echo $form->textField(
+			$model,
+			'longitude',
+			array(
+				'size'=>20,
+				'maxlength' => 45,
+				'data-address-search' => 'longitude',
+			)
+		); ?>
+
+		Lon: <?php echo $form->textField(
+			$model,
+			'latitude',
+			array(
+				'size' => 20,
+				'maxlength' => 45,
+				'data-address-search' => 'latitude',
+			)
+		); ?>
+
+		<?php echo $form->error($model, 'longitude'); ?>
+		<?php echo $form->error($model, 'latitude'); ?>
+	</div>
+</span>
 
 <div class="row">
 	<?php echo $form->labelEx($model,'site_phone'); ?>
@@ -140,3 +190,5 @@
 	?>
 	<?php echo $form->error($model, 'services'); ?>
 </div>
+
+<script src="http://digidem.github.com/HaitiHackMap/scripts/haiti_hack_map.js"></script>
