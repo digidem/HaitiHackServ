@@ -19,8 +19,8 @@ class m130305_103918_new_user_management_profiles_fields extends CDbMigration
 			'error_message' => 'VARCHAR (255) NOT NULL ',
 			'default' => 'VARCHAR (255) NOT NULL ',
 			'widget' => 'VARCHAR (255) NOT NULL ',
-			'other_validator' => 'VARCHAR (50000) NOT NULL ',
-			'widgetparams' => 'VARCHAR (50000) NOT NULL ',
+			'other_validator' => 'TEXT NOT NULL ',
+			'widgetparams' => 'TEXT NOT NULL ',
 		));
 	}
 
