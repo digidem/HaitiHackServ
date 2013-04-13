@@ -29,7 +29,7 @@
   <div class="clear"></div>
 
   <div id="footer">
-    Copyright &copy; <?php echo date('Y'); ?> KOFAVIV<br/>
+    Copyright &copy; 2013 KOFAVIV<br/>
     All Rights Reserved.<br/>
 
   </div>
