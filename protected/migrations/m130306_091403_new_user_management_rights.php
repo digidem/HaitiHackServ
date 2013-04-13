@@ -8,7 +8,7 @@ class m130306_091403_new_user_management_rights extends CDbMigration
 			'type' => 'INTEGER (11) NOT NULL',
 			'weight' => 'INTEGER (11) NOT NULL',
 			'itemname' => 'VARCHAR (64) NOT NULL',
-		));
+		), "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
 
 		$this->createIndex('rights_uq', 'rights', 'itemname', true);
 	}

@@ -10,7 +10,7 @@ class m130306_105427_new_user_management_authitem extends CDbMigration
 			'description' => 'text',
 			'bizrule' => 'text',
 			'data' => 'text',
-		));
+		), "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
 
 		$this->createIndex('index_auth_item', 'authitem', 'name', true);
 	}

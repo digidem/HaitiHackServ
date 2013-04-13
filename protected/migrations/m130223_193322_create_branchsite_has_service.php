@@ -8,7 +8,7 @@ class m130223_193322_create_branchsite_has_service extends CDbMigration
 			'branchsite_has_service', array(
 				'branchsite' => 'integer',
 				'service' => 'integer',
-			));
+			), "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
 
 		$this->createIndex('index_branchsite_has_service_branchsite',
 						   'branchsite_has_service', 'branchsite', FALSE);

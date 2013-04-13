@@ -16,7 +16,7 @@ class m130223_205100_new_user_management extends CDbMigration
 			'lastvisit_at' => 'TIMESTAMP NOT NULL DEFAULT \'0000-00-00 00:00:00\'',
 			'superuser' => 'integer(1) NOT NULL DEFAULT \'0\' ',
 			'status' => 'integer(1) NOT NULL',
-		));
+		), "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
 
 		$this->createIndex('users_email', 'users', 'email', true);
 		$this->createIndex('users_username', 'users', 'username', true);
@@ -39,7 +39,7 @@ class m130223_205100_new_user_management extends CDbMigration
 			'password' => 'VARCHAR (150) NOT NULL',
 			'email' => 'VARCHAR (100) NOT NULL',
 			'level' => 'VARCHAR (45) NOT NULL',
-		));
+		), "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
 
 		$this->insert('users', array(
 			'id' => '1',

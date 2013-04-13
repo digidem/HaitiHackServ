@@ -11,7 +11,7 @@ create table AuthItem
    bizrule text,
    data text,
    primary key (name)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 create table AuthItemChild
 (
@@ -20,7 +20,7 @@ create table AuthItemChild
    primary key (parent,child),
    foreign key (parent) references AuthItem (name) on delete cascade on update cascade,
    foreign key (child) references AuthItem (name) on delete cascade on update cascade
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 create table AuthAssignment
 (
@@ -30,7 +30,7 @@ create table AuthAssignment
    data text,
    primary key (itemname,userid),
    foreign key (itemname) references AuthItem (name) on delete cascade on update cascade
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 create table Rights
 (
@@ -39,4 +39,4 @@ create table Rights
 	weight integer not null,
 	primary key (itemname),
 	foreign key (itemname) references AuthItem (name) on delete cascade on update cascade
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

@@ -21,7 +21,7 @@ class m130305_103918_new_user_management_profiles_fields extends CDbMigration
 			'widget' => 'VARCHAR (255) NOT NULL ',
 			'other_validator' => 'TEXT NOT NULL ',
 			'widgetparams' => 'TEXT NOT NULL ',
-		));
+		), "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
 	}
 
 	public function down()
