@@ -1,4 +1,5 @@
 <?php
+ini_set('date.timezone', 'America/New_York');
 
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../yii1113/framework/yii.php';
