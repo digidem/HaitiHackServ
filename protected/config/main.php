@@ -9,7 +9,7 @@ include "db_utils.php";
 
 $config = array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Kofaviv',
+	'name'=>'Cartographie Ressources - Violences Basées sur le Genre',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
