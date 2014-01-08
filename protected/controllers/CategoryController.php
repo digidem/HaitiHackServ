@@ -21,12 +21,16 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			if(isset($_POST['Category']['Branchsite']))
-				$model->branchsites = $_POST['Category']['Branchsite'];
+			
 
 
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			 {	//$this->redirect(array('view','id'=>$model->id));
+			    if(isset($_POST['save']))	
+				           $this->redirect(array('view','id'=>$model->id));
+				    elseif(isset($_POST['addNewCategory']))
+					      $this->redirect(array('category/create'));
+			 }
 		}
 
 		$this->render('create',array(
@@ -43,11 +47,15 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			if(isset($_POST['Category']['Branchsite']))
-		$model->branchsites = $_POST['Category']['Branchsite'];
+			
 
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			 {	//$this->redirect(array('view','id'=>$model->id));
+			    if(isset($_POST['save']))	
+				           $this->redirect(array('view','id'=>$model->id));
+				    elseif(isset($_POST['addNewCategory']))
+					      $this->redirect(array('category/create'));
+			 }
 		}
 
 		$this->render('update',array(
@@ -62,7 +70,7 @@ class CategoryController extends Controller
 			$this->loadModel()->delete();
 
 			if(!isset($_GET['ajax']))
-				$this->redirect(array('index'));
+				$this->redirect(array('admin'));
 		}
 		else
 			throw new CHttpException(400,
@@ -90,6 +98,11 @@ class CategoryController extends Controller
 
 	public function actionAdmin()
 	{
+		if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
+		
 		$model=new Category('search');
 		if(isset($_GET['Category']))
 			$model->attributes=$_GET['Category'];

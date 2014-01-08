@@ -24,8 +24,13 @@ class ServiceController extends Controller
 
 
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+			 {	//$this->redirect(array('view','id'=>$model->id));
+			    if(isset($_POST['save']))	
+				           $this->redirect(array('view','id'=>$model->id));
+				    elseif(isset($_POST['addNewService']))
+					      $this->redirect(array('service/create'));
+			 }
+		} 
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -43,7 +48,13 @@ class ServiceController extends Controller
 			$model->attributes=$_POST['Service'];
 
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			 {	//$this->redirect(array('view','id'=>$model->id));
+			    if(isset($_POST['save']))	
+				           $this->redirect(array('view','id'=>$model->id));
+				    elseif(isset($_POST['addNewService']))
+					      $this->redirect(array('service/create'));
+					
+			 }
 		}
 
 		$this->render('update',array(
@@ -58,7 +69,7 @@ class ServiceController extends Controller
 			$this->loadModel()->delete();
 
 			if(!isset($_GET['ajax']))
-				$this->redirect(array('index'));
+				$this->redirect(array('admin'));
 		}
 		else
 			throw new CHttpException(400,
@@ -74,7 +85,11 @@ class ServiceController extends Controller
 	}
 
 	public function actionAdmin()
-	{
+	{    if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
+		
 		$model=new Service('search');
 		if(isset($_GET['Service']))
 			$model->attributes=$_GET['Service'];
