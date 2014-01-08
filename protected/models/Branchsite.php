@@ -128,7 +128,7 @@ class Branchsite extends CActiveRecord
 			$this->attributes,
 			array(
 				'category_names'       => implode($categoryNames, ", "),
-				'category_name'        => $this['categories'][0]["category_name"],
+				'category_name'        => $this->getCategoryName(),
 				'organisation_acronym' => $this['organisation0']['acronym'],
 				'organisation_name'    => $this['organisation0']['name'],
 				'quartier_name'        => $this['quartier0']['name'],
@@ -141,6 +141,16 @@ class Branchsite extends CActiveRecord
 	{
 		$extractNames = function($category) { return $category['category_name']; };
 		return array_map($extractNames, $this['categories']);
+	}
+
+	private function getCategoryName()
+	{
+		if ($this['categories'])
+		{
+			return $this['categories'][0]['category_name'];
+		}
+
+		return "";
 	}
 
 	private function getServiceNames()
