@@ -6,14 +6,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Services', 'url'=>array('index')),
-	array('label'=>'Create Services', 'url'=>array('create')),
-	array('label'=>'View Services', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Services', 'url'=>array('admin')),
+	array('label'=>'List Services', 'url'=>array('admin')),
+	array('label'=>'Create New Service', 'url'=>array('create')),
+	/* array('label'=>'View Services', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Manage Services', 'url'=>array('admin')), */
 );
 ?>
 
-<h1> Update Services : <?php echo $model->service_name; ?> </h1>
+<h2> Update Service: <?php echo $model->service_name; ?> </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -26,7 +26,8 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Service'),array('name'=>'addNewService')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

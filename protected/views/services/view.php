@@ -4,16 +4,17 @@ $this->breadcrumbs=array(
 	$model->service_name,
 );
 
+ 
+		   
 $this->menu=array(
-	array('label'=>'List Services', 'url'=>array('index')),
-	array('label'=>'Create Services', 'url'=>array('create')),
-	array('label'=>'Update Services', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Services', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Services', 'url'=>array('admin')),
+	array('label'=>'Back to List Services', 'url'=>array('/Service/admin')),
+	array('label'=>'Update this Service', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Delete this Service', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this service?')),
+	
 );
 ?>
 
-<h1>View Services : <?php echo $model->service_name; ?></h1>
+<h2>Service: <?php echo $model->service_name; ?></h2>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -24,11 +25,3 @@ $this->menu=array(
 	),
 )); ?>
 
-
-<br /><h2> Service can be found : </h2>
-<ul><?php foreach($model->sitePrices as $foreignobj) { 
-
-				printf('<li>%s service price => %d</li>',  CHtml::link($foreignobj->branchsite0['branch_name'], array('siteprice/view', 'id' => $foreignobj->id)),CHtml::encode($foreignobj->prix_service));
-                              //  printf('<li>%s</li>',CHtml::encode($foreignobj->services0['service_name']));
-
-				} ?></ul>
