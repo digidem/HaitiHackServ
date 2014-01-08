@@ -6,6 +6,8 @@ class AdminController extends Controller
 	public $layout='//layouts/column2';
 	
 	private $_model;
+	
+	public $group_id;
 
 	/**
 	 * @return array action filters
@@ -38,6 +40,11 @@ class AdminController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		 if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
+		
 		$model=new User('search');
         $model->unsetAttributes();  // clear any default values
         if(isset($_GET['User']))
@@ -77,6 +84,8 @@ class AdminController extends Controller
 	{
 		$model=new User;
 		$profile=new Profile;
+		$modelGroup= new Group();
+				   
 		$this->performAjaxValidation(array($model,$profile));
 		if(isset($_POST['User']))
 		{
@@ -88,7 +97,18 @@ class AdminController extends Controller
 				$model->password=Yii::app()->controller->module->encrypting($model->password);
 				if($model->save()) {
 					$profile->user_id=$model->id;
-					$profile->save();
+					  if($profile->save())
+					     { $modelGroup->attributes = $_POST['Group'];
+				           $this->group_id=$modelGroup->group_name;
+						     //echo $this->group_id;
+						       if($this->group_id!==null)
+							      { $modelGroupUser= new GroupHasUser();
+								     $modelGroupUser->group=$this->group_id;
+									 $modelGroupUser->user=$model->id;
+								       $modelGroupUser->save();
+								  }
+						 
+						 }
 				}
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
@@ -98,7 +118,7 @@ class AdminController extends Controller
 			'model'=>$model,
 			'profile'=>$profile,
 		));
-	}
+	}  
 
 	/**
 	 * Updates a particular model.
@@ -122,6 +142,17 @@ class AdminController extends Controller
 				}
 				$model->save();
 				$profile->save();
+				$modelGroup= new Group();
+				$modelGroup->attributes = $_POST['Group'];
+				           $this->group_id=$modelGroup->group_name;
+						     //echo $this->group_id;
+						       if($this->group_id!==null)
+							      { $groupHasUser= GroupHasUser::model()->findByAttributes(array('user'=>$_GET['id'],));
+								     $groupHasUser->group=$this->group_id;
+									 $groupHasUser->user=$model->id;
+								       $groupHasUser->save();
+								  }
+				
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
@@ -183,5 +214,23 @@ class AdminController extends Controller
 		}
 		return $this->_model;
 	}
+	
+	
+	//************************  loadGroup ******************************
+	public function loadGroup()
+	{    $modelGroup= new Group();
+           $code= array();
+		   
+		  $modelGroupUser=$modelGroup->findAll();
+           // $code[null]= null;
+		    foreach($modelGroupUser as $group){
+			    $code[$group->id]= $group->group_name;
+		           
+		      }
+		   
+		return $code;
+         
+	}
+	
 	
 }
