@@ -11,13 +11,15 @@
         </div>
         
           <div class="row">
-                <?php echo $form->label($model,'branch_name'); ?>
-                <?php echo $form->textField($model,'branch_name',array('size'=>60,'maxlength'=>250)); ?>
+                
+                <?php echo $form->textField($model,'branch_name',array('size'=>60,'maxlength'=>250, 'placeholder'=>'Branch Name')); ?>
+				<?php echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
+				<?php echo '</br> &nbsp&nbsp&nbsp;'.Yii::t('app', '*Clear and click search-button again to refresh.'); ?>
         </div>
         
         <div class="row">
-                <?php echo $form->label($model,'street_address'); ?>
-                <?php echo $form->textField($model,'street_address',array('size'=>60,'maxlength'=>250)); ?>
+                <?php //echo $form->label($model,'street_address'); ?>
+                <?php //echo $form->textField($model,'street_address',array('size'=>60,'maxlength'=>250)); ?>
         </div>
 
         <div class="row">
@@ -43,35 +45,35 @@
       
 
         <div class="row">
-                <?php echo $form->label($model,'organisation'); ?>
+                <?php ///echo $form->label($model,'organisation'); ?>
                 <?php 
-			$this->widget('application.components.Relation', array(
+			/* $this->widget('application.components.Relation', array(
 					'model' => $model,
 					'relation' => 'organisation0',
 					'fields' => 'name',
 					'allowEmpty' => false,
 					'style' => 'dropdownlist',
 					)
-				); ?>
+				); */ ?>
         </div>
 
         <div class="row">
-                <?php echo $form->label($model,'quartier0.name'); ?>
+                <?php //echo $form->label($model,'quartier0.name'); ?>
                 <?php 
-					$this->widget('application.components.Relation', array(
+					/* $this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'quartier0',
 							'fields' => 'name',
 							'allowEmpty' => true,
 							'style' => 'dropdownlist',
 							)
-						); ?>
+						); */ ?>
             
                 <?php //echo $form->textField($model, 'quartier0.name', array('size'=>60, 'maxlength'=>250)); ; ?>
         </div>
 
         <div class="row buttons">
-                <?php echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
+                <?php //echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
         </div>
 
 <?php $this->endWidget(); ?>

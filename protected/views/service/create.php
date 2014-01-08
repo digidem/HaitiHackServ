@@ -1,21 +1,21 @@
 <?php
 $this->breadcrumbs=array(
-	'Categories'=>array(Yii::t('app', 'index')),
+	'Services'=>array(Yii::t('app', 'index')),
 	Yii::t('app', 'Create'),
 );
 
 $this->menu=array(
-	array('label'=>'Back to List Categories', 'url'=>array('/Category/admin')),
-	/* array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Manage Category', 'url'=>array('admin')) ,*/
+	array('label'=>'Back to List Services', 'url'=>array('/Service/admin')),
+	/* array('label'=>'List Services', 'url'=>array('index')),
+	array('label'=>'Manage Services', 'url'=>array('admin')), */
 );
 ?>
 
-<h2> Create Category </h2>
+<h2> Create Services </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'category-form',
+	'id'=>'services-form',
 	'enableAjaxValidation'=>true,
 )); 
 echo $this->renderPartial('_form', array(
@@ -25,7 +25,7 @@ echo $this->renderPartial('_form', array(
 
 <div class="row buttons">
 	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save')); ?>
-	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Category'),array('name'=>'addNewCategory'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Service'),array('name'=>'addNewService'));    ?>
 </div>
 
 <?php $this->endWidget(); ?>

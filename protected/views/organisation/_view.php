@@ -18,9 +18,9 @@
 	<?php echo CHtml::encode($data->url); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('present_before_earthquake')); ?>:</b>
-	<?php echo CHtml::encode($data->present_before_earthquake); ?>
-	<br />
+	<b><?php //echo CHtml::encode($data->getAttributeLabel('present_before_earthquake')); ?></b>
+	<?php //echo CHtml::encode($data->present_before_earthquake); ?>
+	
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('coverage')); ?>:</b>
 	<?php echo CHtml::encode($data->coverage); ?>

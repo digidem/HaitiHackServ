@@ -5,12 +5,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Organisation', 'url'=>array('index')),
-	array('label'=>'Manage Organisation', 'url'=>array('admin')),
+	array('label'=>'Lister les Organisations', 'url'=>array('index')),
+	//array('label'=>'Manage Organisation', 'url'=>array('admin')),
 );
 ?>
 
-<h1> Create Organisation </h1>
+<h2> Cr&eacute;er une Organisation </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -23,7 +23,9 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Create')); ?>
+	
+	<?php echo CHtml::submitButton(Yii::t('app', 'Creer'),array('name'=>'create'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Ajouter-Branche'),array('name'=>'addBranch')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

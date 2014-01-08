@@ -25,7 +25,7 @@ data: $(this).serialize()
 			");
 		?>
 
-<h1> Manage&nbsp;Departements</h1>
+<h2> Manage&nbsp;Departements</h2>
 
 <?php echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">

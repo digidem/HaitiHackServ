@@ -3,15 +3,15 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle=Yii::app()->name;
 //$this->breadcrumbs=array(
 //	'Login',
 //);
 ?>
 
-<h1>Login</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+	<div id="authen">
+		<h3 class="firstGraf">Se Connecter</h3>
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -22,26 +22,33 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+	<div class="formEnter">
+		<?php echo $form->textField($model,'username',array('placeholder' => 'Utilisateur')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+	<div class="formEnter">
+		<?php echo $form->passwordField($model,'password',array('placeholder' => 'Mot de Passe')); ?>
 		<?php echo $form->error($model,'password'); ?>
 		
 	</div>
 
 	
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+	<div class="subEnter">
+		<?php echo CHtml::submitButton('Connecter'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+</div>
+
+<div id="iconAdd">
+    <ul>
+        <li><img src="<?php echo Yii::app()->baseUrl;  ?>/css/img/hackathon_icons/woman.jpg" alt="" class="iconMaj"/></li>
+		<li><img src="<?php echo Yii::app()->baseUrl;  ?>/css/img/hackathon_icons/justice.jpg" alt="" class="iconMaj"/></li>
+        <li><img src="<?php echo Yii::app()->baseUrl;  ?>/css/img/hackathon_icons/medical.jpg" alt="" class="iconMaj"/></li>
+        <li><img src="<?php echo Yii::app()->baseUrl;  ?>/css/img/hackathon_icons/children.jpg" alt="" class="iconMaj"/></li>
+
+    </ul>
+</div>

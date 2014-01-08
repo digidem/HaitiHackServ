@@ -1,13 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Categories'=>array(Yii::t('app', 'index')),
+	'Services'=>array(Yii::t('app', 'index')),
 	Yii::t('app', 'Manage'),
 );
 
+
+			  
 $this->menu=array(
 		
-		array('label'=>Yii::t('app', 'Create Category'),
-				'url'=>array('create')),
+		array('label'=>Yii::t('app', 'Create New Service'),
+				'url'=>array('create')), 
 			);
 
 		Yii::app()->clientScript->registerScript('search', "
@@ -16,7 +18,7 @@ $this->menu=array(
 				return false;
 				});
 			$('.search-form form').submit(function(){
-				$.fn.yiiGridView.update('category-grid', {
+				$.fn.yiiGridView.update('services-grid', {
 data: $(this).serialize()
 });
 				return false;
@@ -24,7 +26,7 @@ data: $(this).serialize()
 			");
 		?>
 
-<h2> All&nbsp;Categories</h2>
+<h1> All&nbsp;Services</h1>
 
 <?php //echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
 <div class="search-form" style="">
@@ -33,21 +35,25 @@ data: $(this).serialize()
 )); ?>
 </div>
 
-<?php  $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
+<?php $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
      $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'category-grid',
+	'id'=>'services-grid',
 	'dataProvider'=>$model->search(),
 	//'filter'=>$model,
 	'columns'=>array(
 		//'id',
-		'category_name',
+		'service_name',
 		//'description',
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
-                                  'onchange'=>"$.fn.yiiGridView.update('category-grid',{ data:{pageSize: $(this).val() }})",
+                                  'onchange'=>"$.fn.yiiGridView.update('services-grid',{ data:{pageSize: $(this).val() }})",
                     )),
 					'template'=>'{view}',
+				
 		),
 	),
 )); ?>
+
+    
+	

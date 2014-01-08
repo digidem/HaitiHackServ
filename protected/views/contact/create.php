@@ -5,12 +5,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Contact', 'url'=>array('index')),
-	array('label'=>'Manage Contact', 'url'=>array('admin')),
+	array('label'=>'Back to List Contacts', 'url'=>array('/contact/admin')),
+	
 );
 ?>
 
-<h1> Create Contact </h1>
+<h2> Create Contact </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -23,7 +23,7 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Create')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

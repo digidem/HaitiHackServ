@@ -5,11 +5,16 @@ $this->breadcrumbs=array(
 	Yii::t('app', 'Update'),
 );
 
+
+if(isset($_GET['from'])&& ($_GET['from']=="qv"))
+	          $menuItem=array('label'=>'Previous page', 'url'=>array('/quartier/view', 'id'=>$_GET['id'],'comId'=>$_GET['comId'],'depId'=>$_GET['depId']));
+		  else
+		      $menuItem=array('label'=>'Previous page', 'url'=>array('/commune/view', 'id'=>$_GET['comId'],'depId'=>$_GET['depId']));
+
 $this->menu=array(
-	array('label'=>'List Quartier', 'url'=>array('index')),
-	array('label'=>'Create Quartier', 'url'=>array('create')),
-	array('label'=>'View Quartier', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Quartier', 'url'=>array('admin')),
+	$menuItem,
+	
+	
 );
 ?>
 
@@ -26,7 +31,8 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Quartier'),array('name'=>'addNewQuartier')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

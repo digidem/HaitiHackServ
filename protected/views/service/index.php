@@ -1,16 +1,16 @@
 <?php
 $this->breadcrumbs = array(
-	'Branchsites',
+	'Services',
 	Yii::t('app', 'Index'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('app', 'Create') . ' Branchsite', 'url'=>array('create')),
-	array('label'=>Yii::t('app', 'Manage') . ' Branchsite', 'url'=>array('admin')),
+	array('label'=>Yii::t('app', 'Create') . ' Services', 'url'=>array('create')),
+	array('label'=>Yii::t('app', 'Manage') . ' Services', 'url'=>array('admin')),
 );
 ?>
 
-<h2>Branchsites</h2>
+<h1>Services</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

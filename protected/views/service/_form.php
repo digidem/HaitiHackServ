@@ -3,9 +3,9 @@
 <?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'category_name'); ?>
-<?php echo $form->textField($model,'category_name',array('size'=>60,'maxlength'=>100)); ?>
-<?php echo $form->error($model,'category_name'); ?>
+		<?php echo $form->labelEx($model,'service_name'); ?>
+<?php echo $form->textField($model,'service_name',array('size'=>45,'maxlength'=>45)); ?>
+<?php echo $form->error($model,'service_name'); ?>
 	</div>
 
 	<div class="row">
@@ -13,4 +13,5 @@
 <?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 <?php echo $form->error($model,'description'); ?>
 	</div>
+
 
