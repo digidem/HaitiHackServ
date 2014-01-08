@@ -233,6 +233,7 @@ div.append-bottom, .append-bottom {margin-bottom:1.5em;}
 .box {padding:1.5em;margin-bottom:1.5em;background:#e5eCf9;}
 hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:1px;margin:0 0 17px;border:none;}
 hr.space {background:#fff;color:#fff;visibility:hidden;}
-.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
-.clearfix, .container {display:block;}
+.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;background: url(img/Hack_map_2.jpg) no-repeat center top fixed;}
+.clearfix, .container {display:block; 
+	}
 .clear {clear:both;}

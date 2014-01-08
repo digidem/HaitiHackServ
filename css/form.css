@@ -42,7 +42,7 @@ div.form input,
 div.form textarea,
 div.form select
 {
-	margin: 0.2em 0 0.5em 0;
+	margin: 0.2em 0 0.1em 0;
 }
 
 div.form fieldset
@@ -58,12 +58,12 @@ div.form label
 	font-weight: bold;
 	font-size: 0.9em;
 	display: block;
-	margin-bottom: 8px;
+	margin-bottom: 0px;
 }
 
 div.form .row
 {
-	margin: 5px 0 15px;
+	margin: 5px 0 9px;
 }
 
 div.form .hint
