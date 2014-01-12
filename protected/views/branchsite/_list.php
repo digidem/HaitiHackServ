@@ -1,5 +1,3 @@
-
-
 <?php echo $form->errorSummary($model); ?>
 
 <?php
@@ -20,23 +18,20 @@ data: $(this).serialize()
 <div class="search-form" style="display:none">
 <?php //$this->renderPartial('_search',array(
 	//'model'=>$model,
-//)); 
-
-
+//));
 ?>
 </div>
 
 </br></br>
 
-
-<?php 
+<?php
    $from=$_GET['from'];
    if($from==1)//la creation vient de la page branchsite
    { $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'branchsite-grid',
 	'showTableOnEmpty'=>'true',
 	'dataProvider'=>$model->findByPk($_GET['orgaId']),
-	
+
 	//'filter'=>$model,
 	'columns'=>array(
 		//'id',
@@ -48,14 +43,13 @@ data: $(this).serialize()
 		//'latitude',
 		//'url',
 		'site_phone',
-			
-		array( 'class'=>'CButtonColumn',),		   
+
+		array( 'class'=>'CButtonColumn',),
 		   ),
-		  
-     )); 
+     ));
 	}
    elseif($from==0)//la creation vient de la page organisation
-   { 
+   {
      $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'branchsite-grid',
 	'showTableOnEmpty'=>'true',
@@ -71,14 +65,7 @@ data: $(this).serialize()
 		//'latitude',
 		//'url',
 		'site_phone',
-						   
-		   
-		 
 		  ),
-     )); 
-	  
+     ));
 	}
-				
-				
-
 ?>

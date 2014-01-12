@@ -4,10 +4,9 @@ $this->breadcrumbs=array(
 	Yii::t('app', 'Manage'),
 );
 
-
         if(isset($_GET['orgaId'])&& ($_GET['orgaId']!=null))
 		      $menuItem=array('label'=>'Previous page', 'url'=>array('/organisation/view', 'id'=>$_GET['orgaId']));
-		else
+				else
 		      $menuItem=array('label'=>'Previous page', 'url'=>array('/organisation/index'));
 
 $this->menu=array(
@@ -49,7 +48,7 @@ data: $(this).serialize()
 	'columns'=>array(
 		//'id',
                 'branch_name',
-            
+
 		'street_address',
                 //'quartier0.name'
 		//'longitude',
@@ -57,7 +56,7 @@ data: $(this).serialize()
 		//'url',
 		'site_phone',
 		'organisation0.name',
-		
+
 		 array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
@@ -72,6 +71,6 @@ data: $(this).serialize()
             'options'=>array( 'class'=>'icon-view' ),
         ),
 		),
-		), 
+		),
 	),
 )); ?>
