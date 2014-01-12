@@ -10,8 +10,6 @@ $this->menu=array(
 	//array('label'=>Yii::t('app', 'Manage') . ' Organisation', 'url'=>array('admin')),
 );
 
-
-
     Yii::app()->clientScript->registerScript('search', "
 			$('.search-button').click(function(){
 				$('.search-form').toggle();
@@ -24,8 +22,6 @@ data: $(this).serialize()
 				return false;
 				});
 			");
-			
-			
 ?>
 
 <?php //echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
@@ -35,7 +31,6 @@ data: $(this).serialize()
 )); ?>
 </div>
 
-
 <div style="margin-bottom:-27px" ><h2>Organisations</h2> </div>
 
 <?php /* $this->widget('zii.widgets.CListView', array(
@@ -43,7 +38,7 @@ data: $(this).serialize()
 	'itemView'=>'_view',
 ));  */?>
 
-<?php 
+<?php
     $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
 	$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'organisation-grid',
@@ -67,12 +62,6 @@ data: $(this).serialize()
                                   'onchange'=>"$.fn.yiiGridView.update('organisation-grid',{ data:{pageSize: $(this).val() }})",
                     )),
 			'template'=>'{view}{update}',
-			
 		),
-		
 	),
 )); ?>
-
-
-	
-               

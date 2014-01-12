@@ -4,11 +4,11 @@ $this->breadcrumbs=array(
 	$model->name,
 );
 
-if(isset($_GET['all'])&& ($_GET['all']==1))
-	          $menuItem=array('label'=>'Previous page', 'url'=>array('/commune/admin', 'depId'=>$_GET['depId']));
+			if(isset($_GET['all'])&& ($_GET['all']==1))
+	      $menuItem=array('label'=>'Previous page', 'url'=>array('/commune/admin', 'depId'=>$_GET['depId']));
 		  else
-		      $menuItem=array('label'=>'Previous page', 'url'=>array('/departement/view', 'id'=>$_GET['depId']));
-		   
+		    $menuItem=array('label'=>'Previous page', 'url'=>array('/departement/view', 'id'=>$_GET['depId']));
+
 $this->menu=array(
 	$menuItem,
 	array('label'=>'List Quartier', 'url'=>array('/quartier/admin', 'comId'=>$_GET['id'], 'depId'=>$_GET['depId'])),
@@ -18,7 +18,7 @@ $this->menu=array(
 );
 ?>
 
-<h2>A Commune of the Department: <?php if($_GET['depId']!=null) echo Departement::Model()->findByPk($_GET['depId'])->name; 
+<h2>A Commune of the Department: <?php if($_GET['depId']!=null) echo Departement::Model()->findByPk($_GET['depId'])->name;
                        else {  $idDep=Commune::Model()->findByPk($_GET['id'])->departement;
 					          echo Departement::Model()->findByPk($idDep)->name;
 						 }
@@ -32,42 +32,37 @@ $this->menu=array(
 		//'departement0.name',
 		'longitude',
 		'latitude',
-		
 	),
 )); ?>
 
-
-<br /><?php 
+<br /><?php
 $dataProvider=Quartier::model()->searchById($_GET['id']);
   if(isset($dataProvider)){ ?>
 <div style="margin-bottom:-47px" ><?php echo "<h4><b> Quartier of this Commune: </b></h4> </br>"; ?></div>
  <?php   }
   else{   ?>
   <div style="margin-bottom:-27px" ><?php echo "<h4><b> Quartier of this Commune: </b></h4> </br></br>"; ?></div>
-<?php 
+<?php
   }
-?> 
+?>
 
-<?php  
-		
-			
-			
+<?php
 		 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
 		 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'quartier-grid',
 	'showTableOnEmpty'=>'true',
 	'dataProvider'=>$dataProvider,
-	
+
 	//'filter'=>$model,
 	'columns'=>array(
 		//'id',
          'name',
 		//'commune0.name',
-			
+
 		 array( 'class'=>'CButtonColumn',
 		        'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
                                   'onchange'=>"$.fn.yiiGridView.update('quartier-grid',{ data:{pageSize: $(this).val() }})",
-                    )), 
+                    )),
 					'template'=>'{view}{update}{delete}',
 			   'buttons'=>array (
         'update'=> array(
@@ -87,12 +82,10 @@ $dataProvider=Quartier::model()->searchById($_GET['id']);
             //'imageUrl'=>Yii::app()->request->baseUrl.'/images/delete.png',
             'url'=>'Yii::app()->createUrl("quartier/delete", array("id"=>$data->id,"comId"=>$_GET[\'id\'],"depId"=>$_GET[\'depId\']))',
             'options'=>array( 'class'=>'icon-remove' ),
-        ), 
+        ),
     ),
-			   ), 
-            	   		
+			   ),
+
 		   ),
-		  
-     )); 
-				
+     ));
 	?>

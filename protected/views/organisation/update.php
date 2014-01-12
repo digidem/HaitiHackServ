@@ -19,14 +19,13 @@ $this->menu=array(
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'organisation-form',
 	'enableAjaxValidation'=>true,
-)); 
+));
 echo $this->renderPartial('_form', array(
 	'model'=>$model,
 	'form' =>$form
 	)); ?>
 
 <div class="row buttons">
-	
 	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save'));    ?>
 	<?php echo CHtml::submitButton(Yii::t('app', 'Add Branch'),array('name'=>'addBranch')); ?>
 </div>

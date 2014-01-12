@@ -9,7 +9,6 @@ $this->menu=array(
 	array('label'=>'List Organisation', 'url'=>array('index')),
 	array('label'=>'Update Organisation', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Create New Organisation', 'url'=>array('create')),
-	
 	//array('label'=>'Delete Organisation', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	//array('label'=>'Manage Organisation', 'url'=>array('admin')),
 );
@@ -26,8 +25,6 @@ data: $(this).serialize()
 				return false;
 				});
 			");
-
-
 ?>
 
 <h2>View Organisation : <?php echo $model->name; ?></h2>
@@ -38,36 +35,32 @@ data: $(this).serialize()
 		//'id',
 		'name',
                 'acronym',
-		'email',		
+		'email',
 		'url',
 		//'present_before_earthquake',
 		'coverage',
 	),
 )); ?>
 
-
 <br />
-<?php 
+<?php
 $dataProvider=Branchsite::model()->searchById($_GET['id']);
   if(isset($dataProvider)){ ?>
 <div style="margin-bottom:-47px" ><?php echo "<h4><b> Branch of this Organisation: </b></h4></br> "; ?></div>
  <?php   }
   else{   ?>
   <div style="margin-bottom:-27px" ><?php echo "<h4><b> Branch of this Organisation: </b></h4> </br></br>"; ?></div>
-<?php 
+<?php
   }
-?> 
+?>
 
-<?php  
-		
-			
-			
+<?php
 		// $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
 		 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'branchsite-grid',
 	'showTableOnEmpty'=>'true',
 	'dataProvider'=>$dataProvider,
-	
+
 	//'filter'=>$model,
 	'columns'=>array(
 		//'id',
@@ -79,7 +72,7 @@ $dataProvider=Branchsite::model()->searchById($_GET['id']);
 		//'latitude',
 		//'url',
 		'site_phone',
-			
+
 		 array( 'class'=>'CButtonColumn',
 		       /* 'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
                                   'onchange'=>"$.fn.yiiGridView.update('branchsite-grid',{ data:{pageSize: $(this).val() }})",
@@ -103,26 +96,25 @@ $dataProvider=Branchsite::model()->searchById($_GET['id']);
             //'imageUrl'=>Yii::app()->request->baseUrl.'/images/delete.png',
             'url'=>'Yii::app()->createUrl("branchsite/delete", array("id"=>$data->id,"orgaId"=>$_GET[\'id\']))',
             'options'=>array( 'class'=>'icon-remove' ),
-        ), 
+        ),
     ),
-			   ), 
-            	   		
+			   ),
+
 		   ),
-		  
-     )); 
-				
+
+     ));
+
 	?>
 <br />
 <div class="left" style="margin-top:-32px; width:100%;"><div class="left" style="margin-top:-4px; "><h3>Contact of this Organisation: &nbsp;</br></h3></div>
          <h5><b><?php $modelContact=Contact::model()->searchByIdOrga($model->id);
 	         $res=$modelContact->getData();
-		 foreach ($res as $contact) 
-   		    echo $contact->name.' (T&eacute;l.:'.$contact->phone.' / email: '.$contact->email.' )</br>';			
+		 foreach ($res as $contact)
+   		    echo $contact->name.' (T&eacute;l.:'.$contact->phone.' / email: '.$contact->email.' )</br>';
 	  ?></b></h5></div><br />
-	  
-	  
+
  <!--<br /><h2>Partners  of this Organisation: </h2>    -->
-<ul><?php /* foreach($model->partners as $foreignobj) { 
+<ul><?php /* foreach($model->partners as $foreignobj) {
 
 				printf('<li>%s</li>', CHtml::link($foreignobj->name, array('partners/view', 'id' => $foreignobj->id)));
 

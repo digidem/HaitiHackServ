@@ -16,14 +16,13 @@ $this->menu=array(
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'commune-form',
 	'enableAjaxValidation'=>true,
-)); 
+));
 echo $this->renderPartial('_form', array(
 	'model'=>$model,
 	'form' =>$form
 	)); ?>
 
 <div class="row buttons">
-	
 	<?php echo CHtml::submitButton(Yii::t('app', 'Add Quartier'),array('name'=>'addQuartier'));    ?>
 	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Commune'),array('name'=>'addNewCommune')); ?>
 	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save')); ?>

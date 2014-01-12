@@ -3,12 +3,12 @@ $this->breadcrumbs=array(
 	'Communes'=>array(Yii::t('app', 'index')),
 	Yii::t('app', 'Manage'),
 );
-        
+
 		if(isset($_GET['depId'])&& ($_GET['depId']!=null))
 		      $menuItem=array('label'=>'Previous page', 'url'=>array('/departement/view', 'id'=>$_GET['depId']));
 		else
 		      $menuItem=array('label'=>'Previous page', 'url'=>array('/departement/index', 'depId'=>''));
-			  
+
 $Departement='Departement';
 
 $this->menu=array(
@@ -18,9 +18,7 @@ $this->menu=array(
 				'List Commune'), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create Commune'),
 				'url'=>array('create')),*/
-			); 
-			
-
+			);
 
 		Yii::app()->clientScript->registerScript('search', "
 			$('.search-button').click(function(){
@@ -56,7 +54,7 @@ data: $(this).serialize()
 		//'id',
 		//'longitude',
 		//'latitude',
-		
+
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(

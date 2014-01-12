@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List Categories', 'url'=>array('admin')),
 	array('label'=>'Create New Category', 'url'=>array('create')),
-	
 );
 ?>
 
@@ -18,7 +17,7 @@ $this->menu=array(
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'category-form',
 	'enableAjaxValidation'=>true,
-)); 
+));
 echo $this->renderPartial('_form', array(
 	'model'=>$model,
 	'form' =>$form

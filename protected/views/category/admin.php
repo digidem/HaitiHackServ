@@ -5,7 +5,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		
 		array('label'=>Yii::t('app', 'Create Category'),
 				'url'=>array('create')),
 			);

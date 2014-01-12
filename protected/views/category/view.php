@@ -8,7 +8,6 @@ $this->menu=array(
 	array('label'=>'Back to List Categories', 'url'=>array('/Category/admin')),
 	array('label'=>'Update this Category', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Category', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this category?')),
-	
 );
 ?>
 
@@ -22,5 +21,3 @@ $this->menu=array(
 		'description',
 	),
 )); ?>
-
-
