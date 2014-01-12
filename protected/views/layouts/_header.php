@@ -1,31 +1,28 @@
 <?php
            if(isset($_GET['r'])){
-              if($_GET['r']==="map/default/index") 
+              if($_GET['r']==="map/default/index")
 		         echo '<div id="header">';
 			  else
 			     echo '<div id="header1">';
-				 
-				 
 		   }
 		  ?>
-		  
+
 	<div id="logo">
-		
 			<?php echo Yii::t('app','Cartographie Ressources - Violences Bas&eacute;es sur le Genre'); //Gender-based Violence Resource Map ?>
 		<a href="/"></a>
 	</div>
 </div>
 
-
 <?php  if(isset($_GET['r'])){
-          if($_GET['r']==="map/default/index") 
+          if($_GET['r']==="map/default/index")
             echo '<div id="menu-top" style="margin-bottom:127px" >';
-          else 
+          else
 		     echo '<div id="menu-top"  >';
         }
 		else
            echo '<div id="menu-top"  >';
 ?>
+
 <?php $this->widget('zii.widgets.CMenu', array(
     'activeCssClass'=>'active',
     'activateParents'=>true,
@@ -63,8 +60,6 @@
         'items'=>array(
             array('label'=>'Users','url'=>array('/user/admin')),
             //array('label'=>'Rights','url'=>array('/rights')),
-
-
         ),
         'visible'=>(!Yii::app()->user->isGuest && Yii::app()->user->name=="admin")),
 
@@ -72,8 +67,8 @@
         'visible'=>(!Yii::app()->user->isGuest && Yii::app()->user->name=="admin")),
 
         array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>(!Yii::app()->user->isGuest )),
-		
+
 		//array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>(!Yii::app()->user->isGuest && Yii::app()->user->name=="admin")),
-		
+
 ))); ?>
 </div>

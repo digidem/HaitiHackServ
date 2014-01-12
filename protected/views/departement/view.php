@@ -8,10 +8,7 @@ $this->menu=array(
 	array('label'=>'Previous', 'url'=>array('index')),
 	array('label'=>'List All Communes', 'url'=>array('/commune/admin','depId'=>$_GET['id'])),
 	array('label'=>'Update Departement', 'url'=>array('update', 'id'=>$model->id)),
-	
-	
 );
-
 
 		Yii::app()->clientScript->registerScript('search', "
 			$('.search-button').click(function(){
@@ -25,9 +22,6 @@ data: $(this).serialize()
 				return false;
 				});
 			");
-
-
-
 ?>
 
 <h2>View Departement : <?php echo $model->name; ?></h2>
@@ -39,26 +33,21 @@ data: $(this).serialize()
                 'name',
 		'longitude',
 		'latitude',
-		
+
 	),
 )); ?>
 
-
-
 <br />
 
-<?php 
+<?php
 
 $dataProvider=Commune::model()->searchById($_GET['id']);
   if(Commune::model()->searchById($_GET['id'])){ ?>
 <div style="margin-bottom:-47px" ><?php echo "<h4><b> Commune in this Departement: </b></h4></br> "; ?></div>
  <?php   }
   ?>
-  
 
-<?php 
-     
-	 	
+<?php
 	 $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
 	 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'commune-grid',
@@ -71,7 +60,7 @@ $dataProvider=Commune::model()->searchById($_GET['id']);
 		//'id',
 		'longitude',
 		'latitude',
-		
+
 		array( 'class'=>'CButtonColumn',
 		       'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
                                   'onchange'=>"$.fn.yiiGridView.update('commune-grid',{ data:{pageSize: $(this).val() }})",
@@ -95,16 +84,9 @@ $dataProvider=Commune::model()->searchById($_GET['id']);
             //'imageUrl'=>Yii::app()->request->baseUrl.'/images/delete.png',
             'url'=>'Yii::app()->createUrl("commune/delete", array("id"=>$data->id,"depId"=>$_GET[\'id\']))',
             'options'=>array( 'class'=>'icon-remove' ),
-        ), 
+        ),
     ),
-          		
-			), 
-				
+			),
+
 	),
-)); ?>	
-				
-				
-				
-				
-				
-				
+)); ?>
