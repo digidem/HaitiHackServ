@@ -10,7 +10,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Branchsites</h1>
+<h2>Branchsites</h2>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

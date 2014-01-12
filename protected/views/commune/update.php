@@ -6,14 +6,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Commune', 'url'=>array('index')),
-	array('label'=>'Create Commune', 'url'=>array('create')),
-	array('label'=>'View Commune', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Commune', 'url'=>array('admin')),
+	array('label'=>'Back to List Commune', 'url'=>array('/commune/admin', 'depId'=>$_GET['depId'])),
+	//array('label'=>'Create New Commune', 'url'=>array('create','depId'=>$_GET['depId'],'from'=>1)),
+	// array('label'=>'View Commune', 'url'=>array('view', 'id'=>$model->id)),
+	// array('label'=>'Manage Commune', 'url'=>array('admin')),
 );
 ?>
 
-<h1> Update Commune : <?php echo $model->name; ?> </h1>
+<h2> Update Commune : <?php echo $model->name; ?> </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -26,7 +26,9 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add Quartier'),array('name'=>'addQuartier'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Commune'),array('name'=>'addNewCommune')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

@@ -7,26 +7,27 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Organisation', 'url'=>array('index')),
-	array('label'=>'Create Organisation', 'url'=>array('create')),
-	array('label'=>'View Organisation', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Organisation', 'url'=>array('admin')),
+	array('label'=>'Create New Organisation', 'url'=>array('create')),
+	//array('label'=>'View Organisation', 'url'=>array('view', 'id'=>$model->id)),
+	//array('label'=>'Manage Organisation', 'url'=>array('admin')),
 );
 ?>
 
-<h1> Update Organisation : <?php echo $model->name; ?> </h1>
+<h2> Update Organisation : <?php echo $model->name; ?> </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'organisation-form',
 	'enableAjaxValidation'=>true,
-)); 
+));
 echo $this->renderPartial('_form', array(
 	'model'=>$model,
 	'form' =>$form
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add Branch'),array('name'=>'addBranch')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

@@ -7,13 +7,13 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Departement', 'url'=>array('index')),
-	array('label'=>'Create Departement', 'url'=>array('create')),
-	array('label'=>'View Departement', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Departement', 'url'=>array('admin')),
+	array('label'=>'Create New Departement', 'url'=>array('create')),
+	//array('label'=>'View Departement', 'url'=>array('view', 'id'=>$model->id)),
+	//array('label'=>'Manage Departement', 'url'=>array('admin')),
 );
 ?>
 
-<h1> Update Departement : <?php echo $model->name; ?> </h1>
+<h2> Update Departement : <?php echo $model->name; ?> </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -26,7 +26,8 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add Commune'),array('name'=>'addCommune')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

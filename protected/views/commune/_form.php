@@ -8,15 +8,15 @@
 <?php echo $form->error($model,'name'); ?>
 	</div>
 
-<label for="Departement">Departement</label><?php 
-					$this->widget('application.components.Relation', array(
+<!--<label for="Departement">Departement</label> --><?php 
+					/* $this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'departement0',
 							'fields' => 'name',
 							'allowEmpty' => true,
 							'style' => 'dropdownlist',
 							)
-						); ?>
+						); */ ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'longitude'); ?>

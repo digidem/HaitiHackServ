@@ -28,9 +28,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'present_before_earthquake'); ?>
-<?php echo $form->checkBox($model,'present_before_earthquake'); ?>
-<?php echo $form->error($model,'present_before_earthquake'); ?>
+		<?php //echo $form->labelEx($model,'present_before_earthquake'); ?>
+<?php //echo $form->checkBox($model,'present_before_earthquake'); ?>
+<?php //echo $form->error($model,'present_before_earthquake'); ?>
 	</div>
 
 	<div class="row">

@@ -59,7 +59,7 @@ class User extends CActiveRecord
 			array('superuser', 'in', 'range'=>array(0,1)),
             array('create_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
             array('lastvisit_at', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
-			array('username, email, superuser, status', 'required'),
+			array('username, password, email, superuser, status', 'required'),
 			array('superuser, status', 'numerical', 'integerOnly'=>true),
 			array('id, username, password, email, activkey, create_at, lastvisit_at, superuser, status', 'safe', 'on'=>'search'),
 		):((Yii::app()->user->id==$this->id)?array(
@@ -80,6 +80,8 @@ class User extends CActiveRecord
         $relations = Yii::app()->getModule('user')->relations;
         if (!isset($relations['profile']))
             $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');
+			$relations['user0'] = array(self::HAS_ONE, 'GroupHasUser', 'user') ;
+			
         return $relations;
 	}
 
@@ -176,7 +178,9 @@ class User extends CActiveRecord
         return new CActiveDataProvider(get_class($this), array(
             'criteria'=>$criteria,
         	'pagination'=>array(
-				'pageSize'=>Yii::app()->getModule('user')->user_page_size,
+				//'pageSize'=>Yii::app()->getModule('user')->user_page_size,
+				'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
+    			
 			),
         ));
     }

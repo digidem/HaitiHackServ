@@ -14,13 +14,3 @@
 <?php echo $form->error($model,'description'); ?>
 	</div>
 
-
-<label for="Branchsite">Branchsite</label><?php 
-					$this->widget('application.components.Relation', array(
-							'model' => $model,
-							'relation' => 'branchsites',
-							'fields' => 'branch_name',
-							'allowEmpty' => false,
-							'style' => 'dropDownList',
-							)
-						); ?>

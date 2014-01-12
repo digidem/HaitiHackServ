@@ -6,11 +6,11 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Departement', 'url'=>array('index')),
-	array('label'=>'Manage Departement', 'url'=>array('admin')),
+	//array('label'=>'Manage Departement', 'url'=>array('admin')),
 );
 ?>
 
-<h1> Create Departement </h1>
+<h2> Create Departement </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -23,7 +23,8 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Create')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Create'),array('name'=>'create'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add Commune'),array('name'=>'addCommune')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

@@ -8,35 +8,37 @@
        
 
         <div class="row">
-                <?php echo $form->label($model,'name'); ?>
-                <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>250)); ?>
+               
+                <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>250, 'placeholder'=>'Contact Name')); ?>
+				<?php echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
+				<?php echo '</br> &nbsp&nbsp&nbsp;'.Yii::t('app', '*Clear and click search-button again to refresh.'); ?>
         </div>
 
         <div class="row">
-                <?php echo $form->label($model,'phone'); ?>
-                <?php echo $form->textField($model,'phone',array('size'=>45,'maxlength'=>45)); ?>
+                <?php // echo $form->label($model,'phone'); ?>
+                <?php //echo $form->textField($model,'phone',array('size'=>45,'maxlength'=>45)); ?>
         </div>
 
         <div class="row">
-                <?php echo $form->label($model,'email'); ?>
-                <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
+                <?php //echo $form->label($model,'email'); ?>
+                <?php //echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
         </div>
 
         <div class="row">
-                <?php echo $form->label($model,'organisation'); ?>
+                <?php //echo $form->label($model,'organisation'); ?>
                 <?php 
-					$this->widget('application.components.Relation', array(
+					/*$this->widget('application.components.Relation', array(
 							'model' => $model,
 							'relation' => 'organisation0',
 							'fields' => 'name',
 							'allowEmpty' => false,
 							'style' => 'dropdownlist',
 							)
-						); ?>
+						);*/ ?>
         </div>
 
         <div class="row buttons">
-                <?php echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
+                <?php //echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
         </div>
 
 <?php $this->endWidget(); ?>

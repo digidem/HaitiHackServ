@@ -5,15 +5,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
-	array('label'=>'Update Category', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Category', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
+	array('label'=>'Back to List Categories', 'url'=>array('/Category/admin')),
+	array('label'=>'Update this Category', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Delete Category', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this category?')),
 );
 ?>
 
-<h1>View Category : <?php echo $model->category_name; ?></h1>
+<h2>Category: <?php echo $model->category_name; ?></h2>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -23,11 +21,3 @@ $this->menu=array(
 		'description',
 	),
 )); ?>
-
-
-<br /><h2>Organisation branch in this category: </h2>
-<ul><?php foreach($model->branchsites as $foreignobj) { 
-
-				printf('<li>%s</li>', CHtml::link($foreignobj->branch_name, array('branchsite/view', 'id' => $foreignobj->id)));
-
-				} ?></ul>

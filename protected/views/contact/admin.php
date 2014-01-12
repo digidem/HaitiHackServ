@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>Yii::t('app',
-				'List Contact'), 'url'=>array('index')),
+		//array('label'=>Yii::t('app',
+			//	'List Contact'), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create Contact'),
 				'url'=>array('create')),
 			);
@@ -25,19 +25,20 @@ data: $(this).serialize()
 			");
 		?>
 
-<h1> Manage&nbsp;Contacts</h1>
+<h2> All&nbsp;Contacts</h2>
 
-<?php echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
+<?php //echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
+<div class="search-form" style="">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
 </div>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
+    $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'contact-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	//'filter'=>$model,
 	'columns'=>array(
 		//'id',
 		'name',
@@ -46,6 +47,10 @@ data: $(this).serialize()
 		//'organisation',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
+                                  'onchange'=>"$.fn.yiiGridView.update('contact-grid',{ data:{pageSize: $(this).val() }})",
+                    )),
+					'template'=>'{view}',
 		),
 	),
 )); ?>

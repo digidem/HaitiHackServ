@@ -58,7 +58,7 @@ class ContactController extends Controller
 			$this->loadModel()->delete();
 
 			if(!isset($_GET['ajax']))
-				$this->redirect(array('index'));
+				$this->redirect(array('admin'));
 		}
 		else
 			throw new CHttpException(400,
@@ -75,6 +75,11 @@ class ContactController extends Controller
 
 	public function actionAdmin()
 	{
+		 if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
+		
 		$model=new Contact('search');
 		if(isset($_GET['Contact']))
 			$model->attributes=$_GET['Contact'];

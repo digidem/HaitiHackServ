@@ -6,27 +6,26 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
-	array('label'=>'View Category', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
+	array('label'=>'List Categories', 'url'=>array('admin')),
+	array('label'=>'Create New Category', 'url'=>array('create')),
 );
 ?>
 
-<h1> Update Category : <?php echo $model->category_name; ?> </h1>
+<h2> Update Category: <?php echo $model->category_name; ?> </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'category-form',
 	'enableAjaxValidation'=>true,
-)); 
+));
 echo $this->renderPartial('_form', array(
 	'model'=>$model,
 	'form' =>$form
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Update')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save'));    ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Category'),array('name'=>'addNewCategory')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

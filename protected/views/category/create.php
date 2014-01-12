@@ -5,12 +5,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
+	array('label'=>'Back to List Categories', 'url'=>array('/Category/admin')),
+	/* array('label'=>'List Category', 'url'=>array('index')),
+	array('label'=>'Manage Category', 'url'=>array('admin')) ,*/
 );
 ?>
 
-<h1> Create Category </h1>
+<h2> Create Category </h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -23,7 +24,8 @@ echo $this->renderPartial('_form', array(
 	)); ?>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Create')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Save'),array('name'=>'save')); ?>
+	<?php echo CHtml::submitButton(Yii::t('app', 'Add New Category'),array('name'=>'addNewCategory'));    ?>
 </div>
 
 <?php $this->endWidget(); ?>

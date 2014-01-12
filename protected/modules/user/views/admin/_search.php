@@ -6,47 +6,12 @@
 )); ?>
 
     <div class="row">
-        <?php echo $form->label($model,'id'); ?>
-        <?php echo $form->textField($model,'id'); ?>
-    </div>
+        <?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20, 'placeholder' => 'Username')); ?>
 
-    <div class="row">
-        <?php echo $form->label($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20)); ?>
-    </div>
+        <?php //echo $form->dropDownList($model,'status',$model->itemAlias('UserStatus')); ?>
 
-    <div class="row">
-        <?php echo $form->label($model,'email'); ?>
-        <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model,'activkey'); ?>
-        <?php echo $form->textField($model,'activkey',array('size'=>60,'maxlength'=>128)); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model,'create_at'); ?>
-        <?php echo $form->textField($model,'create_at'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model,'lastvisit_at'); ?>
-        <?php echo $form->textField($model,'lastvisit_at'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model,'superuser'); ?>
-        <?php echo $form->dropDownList($model,'superuser',$model->itemAlias('AdminStatus')); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->label($model,'status'); ?>
-        <?php echo $form->dropDownList($model,'status',$model->itemAlias('UserStatus')); ?>
-    </div>
-
-    <div class="row buttons">
-        <?php echo CHtml::submitButton(UserModule::t('Search')); ?>
+				<?php echo CHtml::submitButton(Yii::t('app', 'Search')); ?>
+				<?php echo '</br> &nbsp&nbsp&nbsp;'.Yii::t('app', '*Clear and click search-button again to refresh.'); ?>
     </div>
 
 <?php $this->endWidget(); ?>

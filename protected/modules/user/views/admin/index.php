@@ -5,10 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-    array('label'=>UserModule::t('Create User'), 'url'=>array('create')),
-    array('label'=>UserModule::t('Manage Users'), 'url'=>array('admin')),
-    array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('profileField/admin')),
-    array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+    array('label'=>UserModule::t('Create New User'), 'url'=>array('create')),
+   
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -25,44 +23,47 @@ $('.search-form form').submit(function(){
 ");
 
 ?>
-<h1><?php echo UserModule::t("Manage Users"); ?></h1>
+<h2><?php echo UserModule::t("All Users"); ?></h2>
 
-<p><?php echo UserModule::t("You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done."); ?></p>
 
-<?php echo CHtml::link(UserModule::t('Advanced Search'),'#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
+<?php //echo CHtml::link(Yii::t('app', 'Advanced Search'),'#',array('class'=>'search-button')); ?>
+<div class="search-form" style="">
 <?php $this->renderPartial('_search',array(
-    'model'=>$model,
+	'model'=>$model,
 )); ?>
-</div><!-- search-form -->
+</div>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']); // set controller and model for that before
+    $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		array(
+	/*	array(
 			'name' => 'id',
 			'type'=>'raw',
 			'value' => 'CHtml::link(CHtml::encode($data->id),array("admin/update","id"=>$data->id))',
 		),
+		*/
 		array(
 			'name' => 'username',
 			'type'=>'raw',
 			'value' => 'CHtml::link(UHtml::markSearch($data,"username"),array("admin/view","id"=>$data->id))',
 		),
-		array(
+		/*array(
 			'name'=>'email',
 			'type'=>'raw',
 			'value'=>'CHtml::link(UHtml::markSearch($data,"email"), "mailto:".$data->email)',
 		),
-		'create_at',
+		*/
+		//'create_at',
 		'lastvisit_at',
-		array(
+		/*array(
 			'name'=>'superuser',
 			'value'=>'User::itemAlias("AdminStatus",$data->superuser)',
 			'filter'=>User::itemAlias("AdminStatus"),
 		),
+		*/
 		array(
 			'name'=>'status',
 			'value'=>'User::itemAlias("UserStatus",$data->status)',
@@ -70,6 +71,18 @@ $('.search-form form').submit(function(){
 		),
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,50=>50,100=>100),array(
+                                  'onchange'=>"$.fn.yiiGridView.update('commune-grid',{ data:{pageSize: $(this).val() }})",
+                    )),
+					'template'=>'{view}',
+					'buttons'=>array (
+        'view'=> array(
+            'label'=>'view',
+            //'imageUrl'=>Yii::app()->request->baseUrl.'/images/view.png',
+            'url'=>'Yii::app()->createUrl("user/admin/view", array("id"=>$data->id,))',
+            'options'=>array( 'class'=>'icon-view' ),
+        ),
+		),
 		),
 	),
 )); ?>

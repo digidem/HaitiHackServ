@@ -7,6 +7,11 @@ class QuartierController extends Controller
 
 	public function actionView()
 	{
+		if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
+
 		$this->render('view',array(
 			'model'=>$this->loadModel(),
 		));
@@ -22,9 +27,16 @@ class QuartierController extends Controller
 		{
 			$model->attributes=$_POST['Quartier'];
 
+              $model->setAttribute('commune',$_GET['comId']);
 
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			  {	//$this->redirect(array('view','id'=>$model->id));
+			      if(isset($_POST['save']))
+				           $this->redirect(array('view','id'=>$model->id,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
+				    elseif(isset($_POST['addNewQuartier']))
+					      $this->redirect(array('Quartier/create','from'=>0,'id'=>0,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
+
+			  }
 		}
 
 		$this->render('create',array(
@@ -41,9 +53,15 @@ class QuartierController extends Controller
 		if(isset($_POST['Quartier']))
 		{
 			$model->attributes=$_POST['Quartier'];
+            $model->setAttribute('commune',$_GET['comId']);
 
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			  {	//$this->redirect(array('view','id'=>$model->id));
+			      if(isset($_POST['save']))
+				           $this->redirect(array('view','id'=>$model->id,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
+				    elseif(isset($_POST['addNewQuartier']))
+					      $this->redirect(array('Quartier/create','from'=>0,'id'=>0,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
+			  }
 		}
 
 		$this->render('update',array(
@@ -58,7 +76,7 @@ class QuartierController extends Controller
 			$this->loadModel()->delete();
 
 			if(!isset($_GET['ajax']))
-				$this->redirect(array('index'));
+				$this->redirect(array('admin'));
 		}
 		else
 			throw new CHttpException(400,
@@ -67,14 +85,25 @@ class QuartierController extends Controller
 
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Quartier');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+		if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
+
+		$model=new Quartier('search');
+		if(isset($_GET['Quartier']))
+			$model->attributes=$_GET['Quartier'];
+
+		$this->render('admin',array(
+			'model'=>$model,
 		));
 	}
 
 	public function actionAdmin()
-	{
+	{    if (isset($_GET['pageSize'])) {
+		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+		    unset($_GET['pageSize']);
+		}
 		$model=new Quartier('search');
 		if(isset($_GET['Quartier']))
 			$model->attributes=$_GET['Quartier'];
