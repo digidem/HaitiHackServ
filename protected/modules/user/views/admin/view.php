@@ -4,23 +4,21 @@ $this->breadcrumbs=array(
 	$model->username,
 );
 
-
 $this->menu=array(
     array('label'=>UserModule::t('Update This User'), 'url'=>array('update','id'=>$model->id)),
     array('label'=>UserModule::t('List All Users'), 'url'=>array('admin')),
     array('label'=>UserModule::t('Create New User'), 'url'=>array('create')),
-
 );
 ?>
+
 <h2><?php echo UserModule::t('View User').' "'.$model->username.'"'; ?></h2>
 
 <?php
- 
 	$attributes = array(
 		'id',
 		'username',
 	);
-	
+
 	$profileFields=ProfileField::model()->forOwner()->sort()->findAll();
 	if ($profileFields) {
 		foreach($profileFields as $field) {
@@ -32,32 +30,30 @@ $this->menu=array(
 				));
 		}
 	}
-	
+
 	array_push($attributes,
 		//'password',
 		'email',
 		//'activkey',
 		'create_at',
 		'lastvisit_at',
-		
-				array(
+
+			array(
 			'name' => 'superuser',
 			'value' => User::itemAlias("AdminStatus",$model->superuser),
-		),
-		array(
+			),
+			array(
 			'name' => 'group_name',
 			'value' =>Group::model()->findByPk($model->user0->group)->group_name),
-		
-        array(
+
+      array(
 			'name' => 'status',
 			'value' => User::itemAlias("UserStatus",$model->status),
 		)
 	);
-	
+
 	$this->widget('zii.widgets.CDetailView', array(
 		'data'=>$model,
 		'attributes'=>$attributes,
 	));
-	
-
 ?>

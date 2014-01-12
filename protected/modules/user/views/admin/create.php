@@ -6,9 +6,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
     array('label'=>UserModule::t('List All Users'), 'url'=>array('admin')),
-    
 );
 ?>
+
 <h2><?php echo UserModule::t("Create User"); ?></h2>
 
 <?php

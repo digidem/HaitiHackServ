@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 $this->menu=array(
     array('label'=>UserModule::t('List All Users'), 'url'=>array('admin')),
     array('label'=>UserModule::t('Create New User'), 'url'=>array('create')),
-
 );
 ?>
 
