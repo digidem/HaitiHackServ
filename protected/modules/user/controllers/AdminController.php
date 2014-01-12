@@ -4,9 +4,9 @@ class AdminController extends Controller
 {
 	public $defaultAction = 'admin';
 	public $layout='//layouts/column2';
-	
+
 	private $_model;
-	
+
 	public $group_id;
 
 	/**
@@ -44,7 +44,7 @@ class AdminController extends Controller
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
-		
+
 		$model=new User('search');
         $model->unsetAttributes();  // clear any default values
         if(isset($_GET['User']))
@@ -85,7 +85,7 @@ class AdminController extends Controller
 		$model=new User;
 		$profile=new Profile;
 		$modelGroup= new Group();
-				   
+
 		$this->performAjaxValidation(array($model,$profile));
 		if(isset($_POST['User']))
 		{
@@ -107,7 +107,7 @@ class AdminController extends Controller
 									 $modelGroupUser->user=$model->id;
 								       $modelGroupUser->save();
 								  }
-						 
+
 						 }
 				}
 				$this->redirect(array('view','id'=>$model->id));
@@ -118,7 +118,7 @@ class AdminController extends Controller
 			'model'=>$model,
 			'profile'=>$profile,
 		));
-	}  
+	}
 
 	/**
 	 * Updates a particular model.
@@ -133,7 +133,7 @@ class AdminController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			$profile->attributes=$_POST['Profile'];
-			
+
 			if($model->validate()&&$profile->validate()) {
 				$old_password = User::model()->notsafe()->findByPk($model->id);
 				if ($old_password->password!=$model->password) {
@@ -152,7 +152,7 @@ class AdminController extends Controller
 									 $groupHasUser->user=$model->id;
 								       $groupHasUser->save();
 								  }
-				
+
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
@@ -184,7 +184,7 @@ class AdminController extends Controller
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
-	
+
 	/**
      * Performs the AJAX validation.
      * @param CModel the model to be validated
@@ -197,8 +197,8 @@ class AdminController extends Controller
             Yii::app()->end();
         }
     }
-	
-	
+
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -214,23 +214,19 @@ class AdminController extends Controller
 		}
 		return $this->_model;
 	}
-	
-	
+
 	//************************  loadGroup ******************************
 	public function loadGroup()
 	{    $modelGroup= new Group();
            $code= array();
-		   
+
 		  $modelGroupUser=$modelGroup->findAll();
            // $code[null]= null;
 		    foreach($modelGroupUser as $group){
 			    $code[$group->id]= $group->group_name;
-		           
 		      }
-		   
+
 		return $code;
-         
+
 	}
-	
-	
 }

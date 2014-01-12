@@ -25,12 +25,12 @@ class ServiceController extends Controller
 
 			if($model->save())
 			 {	//$this->redirect(array('view','id'=>$model->id));
-			    if(isset($_POST['save']))	
+			    if(isset($_POST['save']))
 				           $this->redirect(array('view','id'=>$model->id));
 				    elseif(isset($_POST['addNewService']))
 					      $this->redirect(array('service/create'));
 			 }
-		} 
+		}
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -49,11 +49,11 @@ class ServiceController extends Controller
 
 			if($model->save())
 			 {	//$this->redirect(array('view','id'=>$model->id));
-			    if(isset($_POST['save']))	
+			    if(isset($_POST['save']))
 				           $this->redirect(array('view','id'=>$model->id));
 				    elseif(isset($_POST['addNewService']))
 					      $this->redirect(array('service/create'));
-					
+
 			 }
 		}
 
@@ -85,11 +85,12 @@ class ServiceController extends Controller
 	}
 
 	public function actionAdmin()
-	{    if (isset($_GET['pageSize'])) {
+	{
+		if (isset($_GET['pageSize'])) {
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
-		
+
 		$model=new Service('search');
 		if(isset($_GET['Service']))
 			$model->attributes=$_GET['Service'];

@@ -6,16 +6,15 @@ class DepartementController extends Controller
 	private $_model;
 
 	public function actionView()
-	{    if (isset($_GET['pageSize'])) {
+	{
+		if (isset($_GET['pageSize'])) {
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
-					
+
 		$this->render('view',array(
 			'model'=>$this->loadModel(),
 		));
-		
-		
 	}
 
 	public function actionCreate()
@@ -31,11 +30,10 @@ class DepartementController extends Controller
 
 			if($model->save())
 			  {   //$this->redirect(array('view','id'=>$model->id));
-			        if(isset($_POST['create']))	
+			        if(isset($_POST['create']))
 				           $this->redirect(array('view','id'=>$model->id));
 				    elseif(isset($_POST['addCommune']))
 					      $this->redirect(array('Commune/create','from'=>0,'id'=>0,'depId'=>$model->id));
-					 
 			   }
 		}
 
@@ -49,21 +47,20 @@ class DepartementController extends Controller
 		$model=$this->loadModel();
 
 		$this->performAjaxValidation($model);
-		   
-		   if(isset($_GET['id']))
-			$idDep=$_GET['id'];
 
-		if(isset($_POST['Departement']))
-		{
+		  if(isset($_GET['id']))
+		  	$idDep=$_GET['id'];
+
+			if(isset($_POST['Departement']))
+			{
 			$model->attributes=$_POST['Departement'];
 
 			if($model->save())
 				{  //$this->redirect(array('view','id'=>$model->id));
-				     if(isset($_POST['save']))	
+				     if(isset($_POST['save']))
 				             $this->redirect(array('Departement/index'));
 				     elseif(isset($_POST['addCommune']))
 					         $this->redirect(array('Commune/create','from'=>0,'id'=>0,'depId'=>$idDep));
-				 
 			     }
 		}
 
@@ -95,7 +92,8 @@ class DepartementController extends Controller
 	} */
 
 	public function actionIndex()//actionAdmin()
-	{     if (isset($_GET['pageSize'])) {
+	{
+		if (isset($_GET['pageSize'])) {
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}

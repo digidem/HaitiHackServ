@@ -21,15 +21,15 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			
+
 
 
 			if($model->save())
 			 {	//$this->redirect(array('view','id'=>$model->id));
-			    if(isset($_POST['save']))	
-				           $this->redirect(array('view','id'=>$model->id));
-				    elseif(isset($_POST['addNewCategory']))
-					      $this->redirect(array('category/create'));
+			    if(isset($_POST['save']))
+			    	$this->redirect(array('view','id'=>$model->id));
+				   elseif(isset($_POST['addNewCategory']))
+					  $this->redirect(array('category/create'));
 			 }
 		}
 
@@ -47,11 +47,11 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			
+
 
 			if($model->save())
 			 {	//$this->redirect(array('view','id'=>$model->id));
-			    if(isset($_POST['save']))	
+			    if(isset($_POST['save']))
 				           $this->redirect(array('view','id'=>$model->id));
 				    elseif(isset($_POST['addNewCategory']))
 					      $this->redirect(array('category/create'));
@@ -102,7 +102,7 @@ class CategoryController extends Controller
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
-		
+
 		$model=new Category('search');
 		if(isset($_GET['Category']))
 			$model->attributes=$_GET['Category'];

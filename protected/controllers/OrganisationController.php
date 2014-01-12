@@ -4,19 +4,16 @@ class OrganisationController extends Controller
 {
 	public $layout='//layouts/column2';
 	private $_model;
-	
+
 	public $idOrga;
 
 	public function actionView()
-	{  /*  if (isset($_GET['pageSize'])) {
-		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-		    unset($_GET['pageSize']);
-		} */
+	{
 		$model=new Organisation('search');
 		if(isset($_GET['Organisation']))
-		    $model->attributes=$_GET['Organisation']; 
-			
-			
+		    $model->attributes=$_GET['Organisation'];
+
+
 		$this->render('view',array(
 			'model'=>$this->loadModel(),
 		));
@@ -32,11 +29,10 @@ class OrganisationController extends Controller
 		{
 			$model->attributes=$_POST['Organisation'];
 
-
 			if($model->save())
 			  {
 				//$this->redirect(array('view','id'=>$model->id));
-				if(isset($_POST['create']))	
+				if(isset($_POST['create']))
 				    $this->redirect(array('view','id'=>$model->id));
 				 elseif(isset($_POST['addBranch']))
 					 $this->redirect(array('Branchsite/create','from'=>0,'id'=>0,'orgaId'=>$model->id));
@@ -53,7 +49,7 @@ class OrganisationController extends Controller
 		$model=$this->loadModel();
 
 		$this->performAjaxValidation($model);
-		
+
 		if(isset($_GET['id']))
 			$idOrga=$_GET['id'];
 
@@ -63,11 +59,10 @@ class OrganisationController extends Controller
 
 			if($model->save())
 				{//$this->redirect(array('view','id'=>$model->id));
-				if(isset($_POST['save']))	
+				if(isset($_POST['save']))
 				    $this->redirect(array('Organisation/index'));
 				 elseif(isset($_POST['addBranch']))
 					 $this->redirect(array('Branchsite/create','from'=>0,'id'=>0,'orgaId'=>$idOrga));
-				
 			}
 		}
 
@@ -106,8 +101,8 @@ class OrganisationController extends Controller
 		}
 		$model=new Organisation('search');
 		if(isset($_GET['Organisation']))
-		    $model->attributes=$_GET['Organisation']; 
-		    
+		    $model->attributes=$_GET['Organisation'];
+
 		$this->render('index',array(
 			'model'=>$model,
 		));

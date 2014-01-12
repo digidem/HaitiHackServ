@@ -4,8 +4,7 @@ class BranchsiteController extends Controller
 {
 	public $layout='//layouts/column2';
 	private $_model;
-	
-	
+
 	public $service_id;
 
 	public function actionView()
@@ -31,14 +30,14 @@ class BranchsiteController extends Controller
 	}
 
 	public function actionUpdate()
-	{   $model = $this->loadModel(); 
-	$modelService= new Service();
-	$modelService=Service::model()->searchByIdBranch($model->id);
+	{
+		$model = $this->loadModel();
+		$modelService= new Service();
+		$modelService=Service::model()->searchByIdBranch($model->id);
 	         $res=$modelService->getData();
-		 foreach ($res as $service) 
+		 foreach ($res as $service)
    		      $this->service_id = $service->id;
-		
-     
+
 		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Branchsite']))
@@ -46,12 +45,11 @@ class BranchsiteController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-		)); 
+		));
 	}
 
 	private function updateModel($model)
-	{    
-	     
+	{
 		$this->branchsiteGeocoding();
 		$model->attributes = $_POST['Branchsite'];
 		$model->setAttribute('organisation',$_GET['orgaId']);
@@ -60,17 +58,17 @@ class BranchsiteController extends Controller
 			{   //$modelService= new Service();
 				   //$modelService->attributes = $_POST['Service'];
 				   $this->service_id=$model->services;
-					if($this->service_id!==null)	
-					  {  
+					if($this->service_id!==null)
+					  {
 						  if(isset($_GET['id'])&&($_GET['id']!=0))//c 1 update
 							 {
 							   $BranchHasService= BranchsiteHasService::model()->findByAttributes(array('branchsite'=>$_GET['id'],));
 							  // echo $BranchHasService->service.' ---1--- '.$BranchHasService->branchsite.'</br>';
 							   $BranchHasService->setAttribute('service',$this->service_id);
 							   $BranchHasService->setAttribute('branchsite',$model->id);
-							   
+
 							  // echo $BranchHasService->service.' ---2--- '.$BranchHasService->branchsite;
-							   
+
 							 }
 						   else //c 1 new record
 							 {
@@ -80,8 +78,8 @@ class BranchsiteController extends Controller
 							 }
 						   $BranchHasService->save();
 					   }
-				   
-			  $this->redirect(array('view', 'id' => $model->id, 'orgaId'=>$_GET['orgaId']));      
+
+			  $this->redirect(array('view', 'id' => $model->id, 'orgaId'=>$_GET['orgaId']));
 			}
 	}
 
@@ -147,7 +145,8 @@ class BranchsiteController extends Controller
 	}
 
 	public function actionAdmin()
-	{   if (isset($_GET['pageSize'])) {
+	{
+		if (isset($_GET['pageSize'])) {
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
@@ -288,29 +287,17 @@ class BranchsiteController extends Controller
 			}
 		}
 	}
-	
-	
+
 	//************************  loadService ******************************
 	public function loadService()
 	{    $modelService= new Service();
            $code= array();
-		   
+
 		  $modelBranchsiteService=$modelService->findAll();
            // $code[null]= null;
 		    foreach($modelBranchsiteService as $service){
 			    $code[$service->id]= $service->service_name;
-		           
 		      }
-		   
 		return $code;
-         
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

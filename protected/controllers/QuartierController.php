@@ -6,11 +6,12 @@ class QuartierController extends Controller
 	private $_model;
 
 	public function actionView()
-	{   if (isset($_GET['pageSize'])) {
+	{
+		if (isset($_GET['pageSize'])) {
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
-		
+
 		$this->render('view',array(
 			'model'=>$this->loadModel(),
 		));
@@ -27,14 +28,14 @@ class QuartierController extends Controller
 			$model->attributes=$_POST['Quartier'];
 
               $model->setAttribute('commune',$_GET['comId']);
-			  
+
 			if($model->save())
 			  {	//$this->redirect(array('view','id'=>$model->id));
-			      if(isset($_POST['save']))	
+			      if(isset($_POST['save']))
 				           $this->redirect(array('view','id'=>$model->id,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
 				    elseif(isset($_POST['addNewQuartier']))
 					      $this->redirect(array('Quartier/create','from'=>0,'id'=>0,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
-					
+
 			  }
 		}
 
@@ -53,10 +54,10 @@ class QuartierController extends Controller
 		{
 			$model->attributes=$_POST['Quartier'];
             $model->setAttribute('commune',$_GET['comId']);
-			
+
 			if($model->save())
 			  {	//$this->redirect(array('view','id'=>$model->id));
-			      if(isset($_POST['save']))	
+			      if(isset($_POST['save']))
 				           $this->redirect(array('view','id'=>$model->id,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
 				    elseif(isset($_POST['addNewQuartier']))
 					      $this->redirect(array('Quartier/create','from'=>0,'id'=>0,'comId'=>$_GET['comId'], 'depId'=>$_GET['depId']));
@@ -88,7 +89,7 @@ class QuartierController extends Controller
 		    Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 		    unset($_GET['pageSize']);
 		}
-		
+
 		$model=new Quartier('search');
 		if(isset($_GET['Quartier']))
 			$model->attributes=$_GET['Quartier'];
@@ -96,7 +97,6 @@ class QuartierController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
-		
 	}
 
 	public function actionAdmin()
